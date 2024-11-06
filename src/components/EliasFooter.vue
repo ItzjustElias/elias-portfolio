@@ -1,6 +1,6 @@
 <template>
     <footer>
-      &copy; Elias Bloem - {{ new Date().getFullYear() }}
+      <strong>&COPY;</strong> Elias Bloem ~ {{ new Date().getFullYear() }}
     </footer>
 </template>
   
@@ -19,8 +19,13 @@ footer {
     bottom: 0;
     width: 100%;
     margin-bottom: 5px;
-    background-color: rgba(0,0,0,0);
     text-align: center;
+    opacity: 60%;
+    font-weight: bold !important;
+}
+
+strong {
+  font-weight: bolder;
 }
 
 </style>

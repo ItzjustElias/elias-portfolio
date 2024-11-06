@@ -1,7 +1,9 @@
 <template>
+  <title>Elias Portfolio</title>
   <div id="app">
-    <HelloWorld msg="Website under Development!" />
+    <HelloWorld msg="Website under Development" />
     <EliasFooter />
+    <EliasTypeWriterTest />
   </div>
 </template>
 
@@ -24,6 +26,8 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-height: 100%;
+  overflow-y: hidden;
 }
 
 #app {
@@ -31,6 +35,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2e2e2e;
+  color: #887BAF;
+  background: rgb(0, 1, 37);
 }
 </style>
