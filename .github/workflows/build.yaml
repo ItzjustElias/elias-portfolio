@@ -1,19 +1,31 @@
-name: Build and Deploy Vue Application to Github Pages
+name: Build staging version
 on:
     push:
         branches:
-            - master
-
+            - front-end
 jobs:
-    build_deploy_vue:
+    Build_Staging:
         runs-on: ubuntu-latest
-        name: Build and Deploy Vue
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v4
 
-            - id: Build-Deploy-Vue
-              uses: thefrustrateddev/vue-deploy-github-pages@v1.0.0
+            - name: Setup NodeJS
+              uses: actions/setup-node@v4
               with:
-                  username: "ItzjustElias"
-                  reponame: "elias-portfolio"
-                  token: ${{ secrets.GITHUB_TOKEN }} # no need to change this line this is used to create the branch in your application repository
+                  node-version: 20.9.x
+                  cache: yarn
+
+            - name: Install packages
+              run: yarn install --frozen-lockfile
+
+            - name: Build Vue app
+              run: yarn run build
+
+            - name: Add files to gh-pages branch
+              uses: s0/git-publish-subdir-action@develop
+              env:
+                  REPO: self
+                  BRANCH: gh-pages
+                  FOLDER: dist
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
