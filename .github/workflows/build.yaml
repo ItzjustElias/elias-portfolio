@@ -22,6 +22,10 @@ jobs:
             - name: Build Vue app
               run: yarn run build
 
+            - name: Add CNAME to dist
+              run: cd dist
+                   echo "eliasb.be" > CNAME
+
             - name: Add files to gh-pages branch
               uses: s0/git-publish-subdir-action@develop
               env:
