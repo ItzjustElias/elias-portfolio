@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Website under Development" />
+    <HelloWorld msg="Website under Development!" />
     <EliasFooter />
   </div>
 </template>
