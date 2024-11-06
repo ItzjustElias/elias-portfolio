@@ -16,27 +16,26 @@ export default {
 <style scoped>
 .hello {
   display: flex;
-  flex-direction: column;     /* Stack items vertically */
-  justify-content: center;    /* Center horizontally */
-  align-items: center;        /* Center vertically */
-  height: 100vh;              /* Full viewport height */
-  text-align: center;         /* Center text inside the element */
+  flex-direction: column;     
+  justify-content: center;    
+  align-items: center;        
+  height: 100vh;              
+  text-align: center;         
 }
 
 h1 {
   text-shadow: 100px;
   font-family: 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
-  font-size: 5vw;             /* Responsive font size */
+  font-size: 5vw;
   padding: 10px;
   line-height: normal;
   margin: 0;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 768px) {
   .logo {
-    width: 30vw;              /* Slightly larger on smaller screens */
+    width: 30vw;
   }
 
   h1 {
@@ -46,7 +45,7 @@ h1 {
 
 @media (max-width: 480px) {
   .logo {
-    width: 40vw;              /* Adjust for very small screens */
+    width: 40vw;
   }
 
   h1 {
