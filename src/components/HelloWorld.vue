@@ -24,11 +24,9 @@ export default {
 }
 
 h1 {
-  text-shadow: 100px;
   font-family: 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
   font-size: 5vw;
-  padding: 10px;
   line-height: normal;
   margin: 0;
 }

@@ -27,6 +27,5 @@ footer {
 strong {
   font-weight: bolder;
 }
-
 </style>
   
