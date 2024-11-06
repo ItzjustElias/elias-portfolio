@@ -1,4 +1,4 @@
-name: Build staging version
+name: Build GH pages
 on:
     push:
         branches:
@@ -29,3 +29,4 @@ jobs:
                   BRANCH: gh-pages
                   FOLDER: dist
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY_SECRET }}
