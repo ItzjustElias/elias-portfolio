@@ -8,17 +8,18 @@
   export default {
     name: 'EliasFooter'
   }
-</script>
+</script> 
   
 <style scoped>
 
 footer {
-    position: fixed;
+    position:relative;
     font-family: 'Arial Narrow Bold', sans-serif;;
     left: 0;
     bottom: 0;
     width: 100%;
-    margin-bottom: 5px;
+    padding: 10px;
+    margin-bottom: 50px;
     text-align: center;
     opacity: 60%;
     font-weight: bold !important;
