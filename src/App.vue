@@ -39,6 +39,10 @@ export default {
   max-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 #app {
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-smoothing: antialiased;
