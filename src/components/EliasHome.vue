@@ -9,7 +9,7 @@
           <span class="highlight">Artist, Developer, Team Player, Designer, Student</span>
         </h1>
         <p class="description">Welcome to my personal space. Here you will find my work, skills, and projects. I'm currently studying IT at Hogent in Ghent.</p>
-        <a href="https://github.com/your-github" target="_blank" class="btn-github">
+        <a href="https://github.com/ItzjustElias" target="_blank" class="btn-github">
           <span class="star">⭐</span> Star my GitHub
         </a>
       </div>
@@ -74,10 +74,8 @@ export default {
   data() {
     return {
       events: [
-        { date: "2020", title: "Started My IT Journey", description: "Began studying IT at Hogent in Ghent." },
-        { date: "2021", title: "First Internship", description: "Completed an internship at XYZ Corp, working on front-end development." },
-        { date: "2022", title: "Personal Projects", description: "Built personal projects and contributed to open-source." },
-        { date: "2023", title: "Specialized in Vue.js", description: "Focused on Vue.js for creating dynamic, modern web applications." },
+        { date: "2024", title: "Started My IT Journey", description: "Began studying IT at Hogent in Ghent." },
+        { date: "2024", title: "Minecraft Modding", description: "Started creating fabric mods for The game called Minecraft" },
       ],
     };
   },
