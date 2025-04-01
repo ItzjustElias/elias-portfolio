@@ -12,7 +12,7 @@ const toggleMenu = () => {
 <template>
   <nav class="navbar">
     <div class="nav-brand">
-      <router-link to="/">Portfolio</router-link>
+      <router-link to="/">Elias</router-link>
     </div>
     
     <button class="menu-toggle" @click="toggleMenu">
@@ -48,7 +48,7 @@ const toggleMenu = () => {
 
 <style>
 .navbar {
-  background-color: #1a1a1a;
+  background-color: #0d1117;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -62,7 +62,7 @@ const toggleMenu = () => {
 }
 
 .nav-brand a {
-  color: #ffffff;
+  color: #defeff;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
@@ -155,7 +155,7 @@ main {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #1a1a1a;
+    background-color: #0d1117;
     flex-direction: column;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

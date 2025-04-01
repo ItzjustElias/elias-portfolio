@@ -7,8 +7,8 @@ const currentYear = new Date().getFullYear()
     <div class="footer-content">
       <div class="footer-section">
         <h3>Contact</h3>
-        <p>Email: your.email@example.com</p>
-        <p>Location: City, Country</p>
+        <p>Email: elias.bloem@telenet.be</p>
+        <p>Location: Oudenaarde, BE</p>
       </div>
       <div class="footer-section">
         <h3>Social</h3>
@@ -28,14 +28,14 @@ const currentYear = new Date().getFullYear()
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {{ currentYear }} Your Name. All rights reserved.</p>
+      <p>&copy; {{ currentYear }} creativity from Elias Bloem</p>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .footer {
-  background-color: #1a1a1a;
+  background-color: #0d1117;
   color: #fff;
   padding: 3rem 2rem 1rem;
   margin-top: 4rem;

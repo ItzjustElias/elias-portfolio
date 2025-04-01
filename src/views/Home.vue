@@ -29,6 +29,10 @@ const skills = [
   }
 ]
 
+const tools = [
+  'git', 'docker', 'aws', 'linux', 'vscode', 'figma', 'github', 'gitlab'
+]
+
 const timeline = [
   {
     year: '2023',
@@ -54,6 +58,7 @@ const timeline = [
 <template>
   <div class="home">
     <section class="hero">
+      <img src="../assets/E.png" alt="Profile Picture" class="profile-pic" />
       <h1>Welcome to My Portfolio</h1>
       <div class="content">
         <h2>Full Stack Developer</h2>
@@ -85,6 +90,13 @@ const timeline = [
       </div>
     </section>
 
+    <section class="tools">
+      <h2>Tools</h2>
+      <div class="tools-container">
+        <img v-for="tool in tools" :key="tool" :src="`https://skillicons.dev/icons?i=${tool}`" :alt="tool" class="tool-icon" />
+      </div>
+    </section>
+
     <section class="timeline">
       <h2>Experience</h2>
       <div class="timeline-container">
@@ -105,11 +117,23 @@ const timeline = [
 .home {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
+/* Hero Section */
 .hero {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem;
+  object-fit: cover;
+  border: 3px solid #defeff;  
 }
 
 h1 {
@@ -119,10 +143,6 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient 3s ease infinite;
-}
-
-.content {
-  margin-top: 2rem;
 }
 
 h2 {
@@ -142,6 +162,7 @@ p {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -161,6 +182,7 @@ p {
   transform: translateY(-2px);
 }
 
+/* Skills Section */
 .skills {
   margin: 4rem 0;
   padding: 2rem;
@@ -170,12 +192,8 @@ p {
 
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-}
-
-.skill-category {
-  padding: 1rem;
 }
 
 .skill-category h3 {
@@ -207,6 +225,28 @@ p {
   transition: width 1s ease-in-out;
 }
 
+/* Tools Section */
+.tools {
+  text-align: center;
+  margin: 4rem 0;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 16px;
+}
+
+.tools-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tool-icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Timeline (Experience) Section */
 .timeline {
   margin: 4rem 0;
 }
@@ -277,25 +317,15 @@ p {
   margin-bottom: 1rem;
 }
 
+/* Keyframes for Gradient Animation */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-  }
-
+/* RESPONSIVENESS */
+@media (max-width: 1024px) {
   .timeline-container::before {
     left: 20px;
   }
@@ -318,6 +348,36 @@ p {
 
   .timeline-content::before {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+  }
+
+  .timeline-year {
+    position: static;
+    text-align: left;
   }
 }
 </style>
