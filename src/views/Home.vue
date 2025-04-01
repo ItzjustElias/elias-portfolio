@@ -59,9 +59,9 @@ const timeline = [
   <div class="home">
     <section class="hero">
       <img src="../assets/E.png" alt="Profile Picture" class="profile-pic" />
-      <h1>Welcome to My Portfolio</h1>
+      <!-- <h1>Welcome to My Portfolio</h1> -->
       <div class="content">
-        <h2>Full Stack Developer</h2>
+        <h2>Software Developer</h2>
         <p>Hi! I'm a passionate developer focused on creating elegant solutions to complex problems.</p>
         <div class="cta-buttons">
           <router-link to="/projects" class="btn">View Projects</router-link>
@@ -146,8 +146,9 @@ h1 {
 }
 
 h2 {
+  font-family: 'AshingC', sans-serif;
   font-size: 2.5rem;
-  color: #646cff;
+  color: #defeff;
   margin-bottom: 1.5rem;
   text-align: center;
 }

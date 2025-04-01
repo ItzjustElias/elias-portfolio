@@ -65,6 +65,13 @@ button:focus-visible {
   text-align: center;
 }
 
+@font-face {
+  font-family: 'AshingC'; /* Give it a name */
+  src: url('./assets/fonts/ahsing.otf') format('opentype'); /* Adjust path if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
