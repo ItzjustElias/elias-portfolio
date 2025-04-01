@@ -1,53 +1,41 @@
-<template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
-</template>
+<script setup lang="ts">
+import { ref } from 'vue'
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+defineProps<{ msg: string }>()
+
+const count = ref(0)
 </script>
 
+<template>
+  <h1>{{ msg }}</h1>
+
+  <div class="card">
+    <button type="button" @click="count++">count is {{ count }}</button>
+    <p>
+      Edit
+      <code>components/HelloWorld.vue</code> to test HMR
+    </p>
+  </div>
+
+  <p>
+    Check out
+    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
+      >create-vue</a
+    >, the official Vue + Vite starter
+  </p>
+  <p>
+    Learn more about IDE Support for Vue in the
+    <a
+      href="https://vuejs.org/guide/scaling-up/tooling.html#ide-support"
+      target="_blank"
+      >Vue Docs Scaling up Guide</a
+    >.
+  </p>
+  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+</template>
+
 <style scoped>
-.hello {
-  display: flex;
-  flex-direction: column;     
-  justify-content: center;    
-  align-items: center;        
-  height: 100vh;              
-  text-align: center;         
-}
-
-h1 {
-  font-family: 'Arial Narrow Bold', sans-serif;
-  text-transform: uppercase;
-  font-size: 5vw;
-  line-height: normal;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .logo {
-    width: 30vw;
-  }
-
-  h1 {
-    font-size: 7vw;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 40vw;
-  }
-
-  h1 {
-    font-size: 8vw;
-  }
+.read-the-docs {
+  color: #888;
 }
 </style>
