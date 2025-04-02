@@ -3,13 +3,13 @@ import { getAuth } from 'firebase/auth';
 import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_PUBLIC_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_PUBLIC_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_PUBLIC_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyCzTpeuTLKxJ_GPJdm87RyTlpdIWvwAKUo",
+  authDomain: "adminpaneleliaswebsite.firebaseapp.com",
+  projectId: "adminpaneleliaswebsite",
+  storageBucket: "adminpaneleliaswebsite.firebasestorage.app",
+  messagingSenderId: "727180904310",
+  appId: "1:727180904310:web:152885e255d0ce2c9e1c57",
+  measurementId: "G-RDG318KTT7"
 };
 
 const app = initializeApp(firebaseConfig);
