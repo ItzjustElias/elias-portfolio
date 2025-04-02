@@ -93,6 +93,7 @@ const timeline = [
     <section class="tools">
       <h2>Tools</h2>
       <div class="tools-container">
+        <!-- <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=git,aws,androidstudio,arduino,azure,babel,bash,blender,css,cloudflare,discord,discordbots,discordjs,docker,eclipse,figma,firebase,flask,github,githubactions,gmail,godot,gradle,html,idea,java,javascript,kali,kotlin,linux,markdown,mysql,netlify,nginx,nodejs,npm,powershell,regex,ubuntu,stackoverflow,windows,wordpress,yarn,vscode,vuejs&theme=dark&perline=15" alt="My Skills" /></a> -->
         <img v-for="tool in tools" :key="tool" :src="`https://skillicons.dev/icons?i=${tool}`" :alt="tool" class="tool-icon" />
       </div>
     </section>
