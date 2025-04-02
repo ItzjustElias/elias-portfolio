@@ -1,37 +1,48 @@
 name: Build GH pages
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
+
 jobs:
-    Build_Staging:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+  Build_Staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Setup NodeJS
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20.9.x
-                  cache: yarn
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.9.x
+          cache: yarn
 
-            - name: Install packages
-              run: yarn install --frozen-lockfile
+      - name: Install packages
+        run: yarn install --frozen-lockfile
 
-            - name: Build Vue app
-              run: yarn run build
+      - name: Set Firebase environment variables
+        run: |
+          echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" >> .env
+          echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> .env
+          echo "VITE_FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}" >> .env
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> .env
+          echo "VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> .env
+          echo "VITE_FIREBASE_MEASUREMENT_ID=${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}" >> .env
 
-            - name: Add CNAME to dist
-              run: |
-                cd dist &&
-                echo eliasb.be >> CNAME
+      - name: Build Vue app
+        run: yarn run build
 
-            - name: Add files to gh-pages branch
-              uses: s0/git-publish-subdir-action@develop
-              env:
-                  REPO: self
-                  BRANCH: gh-pages
-                  FOLDER: dist
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY_SECRET }}
+      - name: Add CNAME to dist
+        run: |
+          cd dist &&
+          echo eliasb.be >> CNAME
+
+      - name: Add files to gh-pages branch
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: dist
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY_SECRET }}

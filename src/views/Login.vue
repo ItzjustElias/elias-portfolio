@@ -14,7 +14,22 @@ const signInWithGoogle = async () => {
   
   try {
     const provider = new GoogleAuthProvider()
-    await signInWithPopup(auth, provider)
+    const result = await signInWithPopup(auth, provider)
+    const user = result.user
+
+    if (!user) throw new Error('No user found')
+
+    // Get user's ID token result to check custom claims
+    const idTokenResult = await user.getIdTokenResult()
+
+    // Check if the user has the 'allowedUser' custom claim
+    if (!idTokenResult.claims.allowedUser) {
+      error.value = 'Access denied: Unauthorized email'
+      await auth.signOut() // Optional: Sign out if they don't have the claim
+      return
+    }
+
+    // If the claim is valid, proceed to the dashboard
     router.push('/dashboard')
   } catch (e) {
     error.value = 'Failed to sign in with Google'

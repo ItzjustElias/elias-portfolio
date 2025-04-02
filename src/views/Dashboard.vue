@@ -2,8 +2,21 @@
 import { ref } from 'vue'
 import { Line } from 'vue-chartjs'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
+import { getAuth, signOut } from 'firebase/auth'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+
+const auth = getAuth();
+
+const logout = async () => {
+  try {
+    await signOut(auth);
+    alert("Logged out successfully!");
+    window.location.reload(); // Reload or redirect to login page
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+}
 
 const pageViews = ref({
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -40,7 +53,10 @@ const chartOptions = {
 
 <template>
   <div class="dashboard">
-    <h1>Dashboard</h1>
+    <div class="header">
+      <h1>Dashboard</h1>
+      <button class="logout-btn" @click="logout">Logout</button>
+    </div>
     
     <div class="stats-grid">
       <div class="stat-card">
@@ -83,13 +99,32 @@ const chartOptions = {
   padding: 2rem;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 h1 {
-  text-align: center;
-  margin-bottom: 3rem;
   font-size: 2.5rem;
   background: linear-gradient(45deg, #646cff, #535bf2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.logout-btn {
+  background-color: #ff4757;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #e84147;
 }
 
 .stats-grid {

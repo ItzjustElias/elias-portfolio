@@ -169,8 +169,8 @@ p {
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
-  background-color: #646cff;
-  color: white;
+  background-color: #defeff;
+  color: #0d1117;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -179,7 +179,8 @@ p {
 
 .btn:hover {
   background-color: transparent;
-  border-color: #646cff;
+  border-color: #defeff;
+  color: #defeff;
   transform: translateY(-2px);
 }
 
@@ -188,6 +189,7 @@ p {
   margin: 4rem 0;
   padding: 2rem;
   background-color: #1a1a1a;
+  color: #defeff;
   border-radius: 16px;
 }
 
@@ -199,7 +201,7 @@ p {
 
 .skill-category h3 {
   margin-bottom: 1.5rem;
-  color: #646cff;
+  color: #defeff;
 }
 
 .skill-item {
