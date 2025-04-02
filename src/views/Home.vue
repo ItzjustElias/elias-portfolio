@@ -223,7 +223,7 @@ p {
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, #646cff, #535bf2);
+  background: linear-gradient(90deg, #defeff, #caf0f1);
   border-radius: 4px;
   transition: width 1s ease-in-out;
 }
