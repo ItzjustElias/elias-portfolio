@@ -84,7 +84,7 @@ const signInWithGoogle = async () => {
 h1 {
   margin-bottom: 2rem;
   font-size: 2rem;
-  background: linear-gradient(45deg, #646cff, #535bf2);
+  background-color: #defeff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

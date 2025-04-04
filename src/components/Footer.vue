@@ -50,7 +50,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer-section h3 {
-  color: #646cff;
+  color: #defeff;
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -75,7 +75,7 @@ const currentYear = new Date().getFullYear()
 
 .social-links a:hover,
 .footer-section nav a:hover {
-  color: #646cff;
+  color: #defeff;
 }
 
 .footer-section nav {

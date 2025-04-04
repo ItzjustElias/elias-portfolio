@@ -159,15 +159,15 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #646cff;
+  border-color: #defeff;
   box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
 }
 
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background-color: #646cff;
-  color: white;
+  background-color: #defeff;
+  color: #0d1117;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -176,7 +176,7 @@ textarea:focus {
 }
 
 .submit-btn:hover:not(:disabled) {
-  background-color: #535bf2;
+  background-color: #b5f3f5;
   transform: translateY(-2px);
 }
 
@@ -228,7 +228,7 @@ textarea:focus {
 }
 
 .social-link:hover {
-  background-color: #646cff;
+  background-color: #defeff;
   transform: translateX(10px);
 }
 

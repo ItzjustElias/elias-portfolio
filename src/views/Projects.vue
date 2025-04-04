@@ -110,7 +110,7 @@ h1 {
 
 .project-card h3 {
   margin-bottom: 1rem;
-  color: #646cff;
+  color: #defeff;
   font-size: 1.5rem;
 }
 
@@ -137,14 +137,15 @@ h1 {
 }
 
 .tech-tag:hover {
-  background-color: #646cff;
+  background-color: #defeff;
+  color: #0d1117;
 }
 
 .project-link {
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background-color: #646cff;
-  color: white;
+  background-color: #defeff;
+  color: #0d1117;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -154,7 +155,8 @@ h1 {
 
 .project-link:hover {
   background-color: transparent;
-  border-color: #646cff;
+  border-color: #defeff;
+  color: #defeff;
 }
 
 @media (max-width: 1024px) {

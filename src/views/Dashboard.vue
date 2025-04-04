@@ -120,7 +120,7 @@ h1 {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 }
 
 .logout-btn:hover {

@@ -140,7 +140,7 @@ const timeline = [
 h1 {
   font-size: 3.5rem;
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #646cff, #535bf2);
+  background: linear-gradient(45deg, #defeff, #bff0f1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient 3s ease infinite;
@@ -270,7 +270,7 @@ p {
   transform: translateX(-50%);
   width: 2px;
   height: 100%;
-  background-color: #646cff;
+  background-color: #defeff;
 }
 
 .timeline-item {
@@ -284,8 +284,8 @@ p {
 }
 
 .timeline-year {
-  background-color: #646cff;
-  color: white;
+  background-color: #defeff;
+  color: #0d1117;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   font-weight: bold;
@@ -312,7 +312,7 @@ p {
 }
 
 .timeline-content h3 {
-  color: #646cff;
+  color: #defeff;
   margin-bottom: 0.5rem;
 }
 
