@@ -1,68 +1,91 @@
 <script setup lang="ts">
 const skills = [
   {
-    category: 'Frontend',
+    category: "Frontend",
     items: [
-      { name: 'Vue.js', level: 90 },
-      { name: 'React', level: 85 },
-      { name: 'TypeScript', level: 88 },
-      { name: 'CSS/SCSS', level: 92 }
-    ]
+      { name: "React", level: 75 },
+      { name: "TypeScript", level: 75 },
+      { name: "Vuejs", level: 60 },
+      { name: "Tailwind CSS", level: 65 },
+    ],
   },
   {
-    category: 'Backend',
+    category: "Backend",
     items: [
-      { name: 'Node.js', level: 85 },
-      { name: 'Python', level: 80 },
-      { name: 'PostgreSQL', level: 75 },
-      { name: 'MongoDB', level: 78 }
-    ]
+      { name: "NestJS", level: 85 },
+      { name: "Python", level: 80 },
+      { name: "MYSQL", level: 75 },
+      { name: "Drizzle ORM", level: 65 },
+    ],
   },
   {
-    category: 'Tools & Others',
+    category: "Tools & Others",
     items: [
-      { name: 'Git', level: 88 },
-      { name: 'Docker', level: 70 },
-      { name: 'AWS', level: 65 },
-      { name: 'CI/CD', level: 75 }
-    ]
-  }
-]
+      { name: "Git", level: 80 },
+      { name: "Visual Studio Code", level: 80 },
+      { name: "Docker", level: 75 },
+      { name: "CI/CD", level: 70 },
+    ],
+  },
+];
 
 const tools = [
-  'git', 'docker', 'aws', 'linux', 'vscode', 'figma', 'github', 'gitlab'
-]
+  "git",
+  "docker",
+  "aws",
+  "linux",
+  "vscode",
+  "figma",
+  "github",
+  "gitlab",
+  "nginx",
+  "postman",
+  "typescript",
+  "react",
+  "vuejs",
+  "nodejs",
+  "python",
+  "mysql",
+  "intellij",
+  "bash",
+  "tailwind",
+  "nestjs",
+];
 
 const timeline = [
   {
-    year: '2023',
-    title: 'Senior Developer',
-    company: 'Tech Corp',
-    description: 'Leading frontend development team and architecting scalable solutions.'
+    year: "2025",
+    title: "Senior Developer",
+    company: "Tech Corp",
+    description:
+      "Leading frontend development team and architecting scalable solutions.",
   },
   {
-    year: '2021',
-    title: 'Full Stack Developer',
-    company: 'StartUp Inc',
-    description: 'Developed and maintained multiple web applications using modern technologies.'
+    year: "2021",
+    title: "Full Stack Developer",
+    company: "StartUp Inc",
+    description:
+      "Developed and maintained multiple web applications using modern technologies.",
   },
   {
-    year: '2019',
-    title: 'Junior Developer',
-    company: 'Dev Agency',
-    description: 'Started professional journey in web development.'
-  }
-]
+    year: "2024",
+    title: "Hogeschool",
+    company: "HOGENT",
+    description: "Start of bachelor IT at HOGENT.",
+  },
+];
 </script>
 
 <template>
   <div class="home">
     <section class="hero">
       <img src="../assets/E.png" alt="Profile Picture" class="profile-pic" />
-      <!-- <h1>Welcome to My Portfolio</h1> -->
       <div class="content">
         <h2>Software Developer</h2>
-        <p>Hi! I'm a passionate developer focused on creating elegant solutions to complex problems.</p>
+        <p>
+          Hi! I'm a passionate developer focused on creating elegant solutions
+          to complex problems.
+        </p>
         <div class="cta-buttons">
           <router-link to="/projects" class="btn">View Projects</router-link>
           <router-link to="/contact" class="btn">Contact Me</router-link>
@@ -73,16 +96,27 @@ const timeline = [
     <section class="skills">
       <h2>Skills</h2>
       <div class="skills-container">
-        <div v-for="category in skills" :key="category.category" class="skill-category">
+        <div
+          v-for="category in skills"
+          :key="category.category"
+          class="skill-category"
+        >
           <h3>{{ category.category }}</h3>
           <div class="skill-items">
-            <div v-for="skill in category.items" :key="skill.name" class="skill-item">
+            <div
+              v-for="skill in category.items"
+              :key="skill.name"
+              class="skill-item"
+            >
               <div class="skill-info">
                 <span class="skill-name">{{ skill.name }}</span>
                 <span class="skill-level">{{ skill.level }}%</span>
               </div>
               <div class="skill-bar">
-                <div class="skill-progress" :style="{ width: skill.level + '%' }"></div>
+                <div
+                  class="skill-progress"
+                  :style="{ width: skill.level + '%' }"
+                ></div>
               </div>
             </div>
           </div>
@@ -93,15 +127,24 @@ const timeline = [
     <section class="tools">
       <h2>Tools</h2>
       <div class="tools-container">
-        <!-- <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=git,aws,androidstudio,arduino,azure,babel,bash,blender,css,cloudflare,discord,discordbots,discordjs,docker,eclipse,figma,firebase,flask,github,githubactions,gmail,godot,gradle,html,idea,java,javascript,kali,kotlin,linux,markdown,mysql,netlify,nginx,nodejs,npm,powershell,regex,ubuntu,stackoverflow,windows,wordpress,yarn,vscode,vuejs&theme=dark&perline=15" alt="My Skills" /></a> -->
-        <img v-for="tool in tools" :key="tool" :src="`https://skillicons.dev/icons?i=${tool}`" :alt="tool" class="tool-icon" />
+        <img
+          v-for="tool in tools"
+          :key="tool"
+          :src="`https://skillicons.dev/icons?i=${tool}`"
+          :alt="tool"
+          class="tool-icon"
+        />
       </div>
     </section>
 
     <section class="timeline">
       <h2>Experience</h2>
       <div class="timeline-container">
-        <div v-for="(item, index) in timeline" :key="index" class="timeline-item">
+        <div
+          v-for="(item, index) in timeline"
+          :key="index"
+          class="timeline-item"
+        >
           <div class="timeline-year">{{ item.year }}</div>
           <div class="timeline-content">
             <h3>{{ item.title }}</h3>
@@ -134,7 +177,7 @@ const timeline = [
   display: block;
   margin: 0 auto 1rem;
   object-fit: cover;
-  border: 3px solid #defeff;  
+  border: 3px solid #defeff;
 }
 
 h1 {
@@ -147,7 +190,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'AshingC', sans-serif;
+  font-family: "AshingC", sans-serif;
   font-size: 2.5rem;
   color: #defeff;
   margin-bottom: 1.5rem;
@@ -263,7 +306,7 @@ p {
 }
 
 .timeline-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
@@ -303,7 +346,7 @@ p {
 }
 
 .timeline-content::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 20px;
   right: 100%;
@@ -323,9 +366,15 @@ p {
 
 /* Keyframes for Gradient Animation */
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* RESPONSIVENESS */

@@ -9,12 +9,10 @@ const showSuccess = ref(false)
 
 const handleSubmit = async () => {
   isSubmitting.value = true
-  // Simulate API call
   await new Promise(resolve => setTimeout(resolve, 1000))
   showSuccess.value = true
   isSubmitting.value = false
   
-  // Reset form after 3 seconds
   setTimeout(() => {
     name.value = ''
     email.value = ''
