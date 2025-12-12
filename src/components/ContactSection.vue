@@ -10,23 +10,54 @@ const form = ref({
 const isSubmitting = ref(false)
 const submitStatus = ref<'idle' | 'success' | 'error'>('idle')
 
+const FORMSUBMIT_EMAIL = 'af4b889cb5bfc47ce096647a037582b5 ';
+const FORMSUBMIT_URL = `https://formsubmit.co/${FORMSUBMIT_EMAIL}`;
+
 const handleSubmit = async () => {
+  if (isSubmitting.value) return;
+
   isSubmitting.value = true
+  submitStatus.value = 'idle' 
 
-  await new Promise(resolve => setTimeout(resolve, 1500))
+  const payload = {
+    ...form.value,
+    _subject: `New Contact from ${form.value.name}`,
+    _replyto: form.value.email, 
+  };
+  
+  try {
+    const response = await fetch(FORMSUBMIT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
 
-  submitStatus.value = 'success'
-  isSubmitting.value = false
+    if (!response.ok) {
+        throw new Error('Form submission failed on the server.');
+    }
 
-  form.value = {
-    name: '',
-    email: '',
-    message: ''
+    submitStatus.value = 'success'
+    
+    form.value = {
+      name: '',
+      email: '',
+      message: ''
+    }
+
+  } catch (error) {
+    console.error('Submission failed:', error)
+    submitStatus.value = 'error'
+
+  } finally {
+    isSubmitting.value = false
+
+    setTimeout(() => {
+      submitStatus.value = 'idle'
+    }, 5000)
   }
-
-  setTimeout(() => {
-    submitStatus.value = 'idle'
-  }, 3000)
 }
 
 const socialLinks = [
