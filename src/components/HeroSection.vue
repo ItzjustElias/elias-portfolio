@@ -26,7 +26,7 @@ const scrollToSection = (id: string) => {
           <span class="gradient-text">& Creative Builder</span>
         </h1>
         <p class="hero-description">
-          Crafting beautiful, performant web applications with modern technologies
+          Crafting "beautiful", performant web applications with modern technologies
           and best practices. Passionate about clean code and exceptional user experiences.
         </p>
         <div class="hero-buttons">
@@ -47,9 +47,9 @@ const scrollToSection = (id: string) => {
           </div>
           <div class="code-content">
             <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
-  <span class="property">name</span>: <span class="string">'Vue Enthusiast'</span>,
-  <span class="property">skills</span>: [<span class="string">'Vue 3'</span>, <span class="string">'TypeScript'</span>],
-  <span class="property">passion</span>: <span class="string">'Building great UX'</span>
+  <span class="property">name</span>: <span class="string">'Elias Bloem'</span>,
+  <span class="property">skills</span>: [<span class="string">'React, Vue, ViteJS'</span>, <span class="string">'TypeScript'</span>],
+  <span class="property">passion</span>: <span class="string">'Building great Apps'</span>
 };</code></pre>
           </div>
         </div>

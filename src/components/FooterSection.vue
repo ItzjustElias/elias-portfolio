@@ -24,17 +24,17 @@ const currentYear = new Date().getFullYear()
           <div class="footer-column">
             <h4 class="footer-title">Connect</h4>
             <ul class="link-list">
-              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
-              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-link">Twitter</a></li>
+              <li><a href="https://github.com/ItzjustElias" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/elias-bloem-33044b335/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a></li>
+              <li><a href="https://twitter.com/#" target="_blank" rel="noopener noreferrer" class="footer-link">Twitter</a></li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p class="copyright">{{ currentYear }} Elias Bloem Portfolio. All rights reserved.</p>
-        <p class="built-with">Built with Vue 3, TypeScript & Vite</p>
+        <p class="copyright">{{ currentYear }} Elias Bloem Portfolio. All rights reserved ❤</p>
+        <p class="built-with">Built with Vue 3, TypeScript & ViteJS</p>
       </div>
     </div>
   </footer>
