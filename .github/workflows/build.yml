@@ -24,9 +24,10 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Add CNAME to output and disable Jekyll
-        run: echo "eliasb.be" > out/CNAME
-        run: touch out/.nojekyll
+      - name: Add CNAME and nojekyll
+        run: |
+          echo "eliasb.be" > out/CNAME
+          touch out/.nojekyll
 
       - name: Deploy to gh-pages branch
         uses: s0/git-publish-subdir-action@develop
