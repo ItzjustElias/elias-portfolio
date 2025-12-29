@@ -4,6 +4,14 @@ import { use } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+export async function generateStaticParams() {
+  const projects = ["zero"];
+
+  return projects.map((id) => ({
+    id: id,
+  }));
+}
+
 interface Project {
   title: string;
   year: string;
@@ -13,7 +21,6 @@ interface Project {
   tags: string[];
 }
 
-// 1. Project Data (Dit kun je later uit een CMS of apart bestand halen)
 const PROJECT_DATA: Record<string, Project> = {
   zero: {
     title: "ZERO",
@@ -23,7 +30,6 @@ const PROJECT_DATA: Record<string, Project> = {
     description: "Een diepe duik in de mogelijkheden van WebGL en interactieve typografie. Zero onderzoekt de grens tussen abstracte kunst en functionele interface design.",
     tags: ["Three.js", "GSAP", "React", "Shaders"],
   },
-  // Voeg hier andere ID's toe zoals 'motion', 'strategy' etc.
 };
 
 const GridCross = ({ className = "" }) => (
@@ -41,11 +47,9 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
       animate={{ opacity: 1 }}
       className="relative z-10 min-h-screen text-white pt-32 pb-20 px-6 md:px-12 bg-black/40 backdrop-blur-md"
     >
-      {/* TECH OVERLAY WRAPPER */}
       <div className="max-w-7xl mx-auto relative">
         <GridCross className="-top-10 -left-4" />
         
-        {/* HEADER SECTION */}
         <Link href="/" className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-[#5D3FD3] transition-colors mb-16">
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Index
         </Link>
@@ -62,7 +66,6 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
             </h1>
           </motion.div>
 
-          {/* PROJECT INFO BAR */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-white/10">
             {[
               { label: "Year", val: project.year },
@@ -84,7 +87,6 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
           </div>
         </header>
 
-        {/* CONTENT SECTION */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -105,7 +107,6 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
             </div>
           </motion.div>
 
-          {/* VISUALS GRID */}
           <div className="md:col-span-7 grid grid-cols-1 gap-6">
             <motion.div 
               whileHover={{ scale: 0.99 }}
