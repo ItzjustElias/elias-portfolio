@@ -1,9 +1,13 @@
 "use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { usePathname } from "next/navigation";
 
 export default function Cursor() {
     const cursorRef = useRef<HTMLDivElement | null>(null);
+
+    const pathname = usePathname();
+    const isLoeka = pathname.includes("theone");
 
     useEffect(() => {
         const cursor = cursorRef.current;
@@ -30,7 +34,9 @@ export default function Cursor() {
     return (
         <div
             ref={cursorRef}
-            className="fixed top-0 left-0 w-15 h-15 bg-white rounded-full pointer-events-none z-9999 mix-blend-difference"
-        />
+            className="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none z-9999 mix-blend-difference flex items-center justify-center text-[10px]"
+            style={{ backgroundColor: isLoeka ? "#FF0000" : "white" }}
+        >
+        </div>
     );
 }

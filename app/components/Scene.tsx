@@ -11,6 +11,7 @@ function Blob() {
     const mesh = useRef<THREE.Mesh>(null!);
     const material = useRef<ComponentRef<typeof MeshDistortMaterial>>(null!);
     const pathname = usePathname();
+    const isLoeka = pathname.includes("theone");
 
     const mouse = useRef(new THREE.Vector2(0, 0));
     const smoothMouse = useRef(new THREE.Vector2(0, 0));
@@ -41,19 +42,14 @@ function Blob() {
             const targetDistort = isProjectPage ? 0.05 : (0.15 + (rippleStrength * 0.5));
             material.current.distort = THREE.MathUtils.lerp(material.current.distort, targetDistort, 0.1);
             material.current.time = customTime.current;
-
-            // 2. FADE: Iets transparanter op projectpagina's voor leesbaarheid tekst
             material.current.opacity = THREE.MathUtils.lerp(material.current.opacity, isProjectPage ? 0.4 : 1, 0.05);
         }
-
-        // 3. DYNAMISCHE SCHAAL & POSITIE: Kleiner en naar achteren op projectpagina's
         const targetScale = isProjectPage ? 0.6 : 1.1;
         const targetZ = isProjectPage ? -2 : 0;
 
         mesh.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.05);
         mesh.current.position.z = THREE.MathUtils.lerp(mesh.current.position.z, targetZ, 0.05);
 
-        // Animatie rotatie en wobble
         mesh.current.rotation.x = t * 0.2;
         mesh.current.rotation.y = t * 0.25;
         mesh.current.rotation.z += delta * 0.1;
@@ -68,7 +64,7 @@ function Blob() {
                 <torusKnotGeometry args={[1, 0.35, 512, 128]} />
                 <MeshDistortMaterial
                     ref={material}
-                    color="#5D3FD3"
+                    color={isLoeka ? "#FF0000" : "#5D3FD3"}
                     speed={0}
                     distort={0.15}
                     roughness={0.1}

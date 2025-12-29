@@ -1,7 +1,7 @@
 import ProjectContent from "./ProjectContent";
 
 export async function generateStaticParams() {
-  const projects = ["zero"]; 
+  const projects = ["zero", "theone"]; 
 
   return projects.map((id) => ({
     id: id,
