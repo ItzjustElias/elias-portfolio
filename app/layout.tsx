@@ -15,8 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elias bloem - Portfolio",
+  title: {
+    default: "Elias Bloem | Creative Developer",
+    template: "%s | Elias Bloem"
+  },
   description: "Portfolio of Elias Bloem, a creative developer specializing in interactive 3D experiences and innovative web design.",
+  metadataBase: new URL("https://eliasb.be")
 };
 
 export default function RootLayout({

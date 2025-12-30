@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef, useEffect, ComponentRef } from "react";
+import React, { useRef, useEffect, ComponentRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { MeshDistortMaterial, Float } from "@react-three/drei";
-import { usePathname } from "next/navigation"; // Cruciaal voor route-detectie
+import { usePathname } from "next/navigation";
 import * as THREE from "three";
 import styles from "./Scene.module.css";
 
@@ -17,13 +17,20 @@ function Blob() {
     const smoothMouse = useRef(new THREE.Vector2(0, 0));
     const customTime = useRef(0);
 
+    const [hasLoaded, setHasLoaded] = useState(false);
+
     useEffect(() => {
+        const timer = setTimeout(() => setHasLoaded(true), 100);
+        
         const onMove = (e: MouseEvent) => {
             mouse.current.x = (e.clientX / window.innerWidth - 0.5) * 2;
             mouse.current.y = -(e.clientY / window.innerHeight - 0.5) * 2;
         };
         window.addEventListener("mousemove", onMove);
-        return () => window.removeEventListener("mousemove", onMove);
+        return () => {
+            window.removeEventListener("mousemove", onMove);
+            clearTimeout(timer);
+        };
     }, []);
 
     useFrame((state, delta) => {
@@ -34,7 +41,6 @@ function Blob() {
 
         const distance = mouse.current.length();
         const rippleStrength = Math.pow(Math.max(0, 1.0 - distance), 3);
-
         const speedMultiplier = 1.0 + (rippleStrength * 4.0);
         customTime.current += delta * speedMultiplier;
 
@@ -44,10 +50,12 @@ function Blob() {
             material.current.time = customTime.current;
             material.current.opacity = THREE.MathUtils.lerp(material.current.opacity, isProjectPage ? 0.4 : 1, 0.05);
         }
-        const targetScale = isProjectPage ? 0.6 : 1.1;
+
+        const baseScale = isProjectPage ? 0.6 : 1.1;
+        const targetScale = hasLoaded ? baseScale : 0;
         const targetZ = isProjectPage ? -2 : 0;
 
-        mesh.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.05);
+        mesh.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.03);
         mesh.current.position.z = THREE.MathUtils.lerp(mesh.current.position.z, targetZ, 0.05);
 
         mesh.current.rotation.x = t * 0.2;
@@ -68,7 +76,7 @@ function Blob() {
                     speed={0}
                     distort={0.15}
                     roughness={0.1}
-                    metalness={0.9}
+                    metalness={0.8}
                     iridescence={1}
                     iridescenceIOR={1.5}
                     iridescenceThicknessRange={[100, 400]}
@@ -88,12 +96,8 @@ export default function Scene() {
             >
                 <pointLight position={[-10, 5, 5]} intensity={5} color="#8A2BE2" />
                 <pointLight position={[10, -5, 5]} intensity={5} color="#FF00FF" />
-                <spotLight position={[0, 10, 0]} intensity={2} color="#ffffff" />
-
                 <ambientLight intensity={1.5} />
                 <pointLight position={[10, 10, 10]} intensity={2.5} color="#5D3FD3" />
-                <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={3} color="#ffffff" />
-                <directionalLight position={[0, -5, -5]} intensity={1} color="#ffffff" />
                 <Blob />
             </Canvas>
         </div>

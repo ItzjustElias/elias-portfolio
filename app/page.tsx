@@ -20,16 +20,22 @@ const TechLabel = ({ label, className = "" }: { label: string; className?: strin
   </div>
 );
 
-const FloatingTech = ({ label, x, y }: { label: string, x: string, y: string }) => (
+const FloatingTech = ({ label, x, y, delay = 0 }: { label: string, x: string, y: string, delay?: number }) => (
   <motion.div
-    initial={{ opacity: 0 }}
+    initial={{ opacity: 0, scale: 0 }}
     animate={{
-      opacity: [0.2, 0.5, 0.2],
+      opacity: [0, 0.5, 0.2],
+      scale: 1,
       y: [0, -20, 0],
       x: [0, 10, 0]
     }}
-    transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-    className="absolute font-mono text-[9px] text-[#5D3FD3] border border-[#5D3FD3]/20 px-2 py-1 rounded-sm bg-black/50 backdrop-blur-sm"
+    transition={{ 
+      scale: { type: "spring", stiffness: 100, delay: 0.8 + delay }, 
+      opacity: { duration: 1, delay: 0.8 + delay },
+      y: { duration: 5, repeat: Infinity, ease: "linear" },
+      x: { duration: 5, repeat: Infinity, ease: "linear" }
+    }}
+    className="absolute font-mono text-[9px] text-[#5D3FD3] border border-[#5D3FD3]/20 px-2 py-1 rounded-sm bg-black/50 backdrop-blur-sm z-20"
     style={{ left: x, top: y }}
   >
     {label}
@@ -174,10 +180,10 @@ export default function Home() {
       </div>
 
       <section className="relative h-screen z-10 flex items-center justify-center">
-        <FloatingTech label="THREE.JS" x="20%" y="30%" />
-        <FloatingTech label="GLSL" x="75%" y="25%" />
-        <FloatingTech label="REACT" x="25%" y="75%" />
-        <FloatingTech label="GSAP" x="80%" y="80%" />
+        <FloatingTech label="THREE.JS" x="20%" y="30%" delay={0.1} />
+        <FloatingTech label="GLSL" x="75%" y="25%" delay={0.3} />
+        <FloatingTech label="REACT" x="25%" y="75%" delay={0.2} />
+        <FloatingTech label="GSAP" x="80%" y="80%" delay={0.4} />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-18 left-12 font-mono text-[8px] text-zinc-600 space-y-1 hidden md:block">
             <p>LAT: 50.8503° N</p>
@@ -331,6 +337,7 @@ export default function Home() {
           <a href="https://be.linkedin.com/in/elias-bloem-048470267" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
           <a href="https://github.com/ItzjustElias" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Github</a>
         </div>
+        <a href="/privacy" className="hover:text-white transition-colors text-[10px] font-mono text-zinc-500 tracking-widest">Privacy Policy</a>
       </footer>
     </main>
   );
