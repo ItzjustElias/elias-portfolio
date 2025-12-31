@@ -24,7 +24,7 @@ const FloatingTech = ({ label, x, y, delay = 0 }: { label: string, x: string, y:
   <motion.div
     initial={{ opacity: 0, scale: 0 }}
     animate={{
-      opacity: [0, 0.5, 0.2],
+      opacity: [0, 0.8, 0.5],
       scale: 1,
       y: [0, -20, 0],
       x: [0, 10, 0]
@@ -35,7 +35,7 @@ const FloatingTech = ({ label, x, y, delay = 0 }: { label: string, x: string, y:
       y: { duration: 5, repeat: Infinity, ease: "linear" },
       x: { duration: 5, repeat: Infinity, ease: "linear" }
     }}
-    className="absolute font-mono text-[9px] text-[#5D3FD3] border border-[#5D3FD3]/20 px-2 py-1 rounded-sm bg-black/50 backdrop-blur-sm z-20"
+    className="absolute font-mono text-[9px] text-[#5D3FD3] border border-[#5D3FD3]/80 px-2 py-1 rounded-sm bg-black/50 backdrop-blur-sm z-20"
     style={{ left: x, top: y }}
   >
     {label}
