@@ -180,7 +180,7 @@ export default function Home() {
     { name: "Java", id: "java", cat: "Backend" },
     { name: "Python", id: "py", cat: "Scripting" },
     { name: "Three.js", id: "threejs", cat: "3D Engine" },
-    { name: "GSAP", id: "gsap", cat: "Animation" },
+    { name: "Docker", id: "docker", cat: "Containerization" },
     { name: "Blender", id: "blender", cat: "3D Modeling" },
     { name: "Unreal", id: "unreal", cat: "Game Engine" },
     { name: "Node.js", id: "nodejs", cat: "Runtime" },
