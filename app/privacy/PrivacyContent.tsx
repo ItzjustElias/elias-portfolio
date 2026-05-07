@@ -7,12 +7,12 @@ const getYear = () => new Date().getFullYear();
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-black text-white font-sans selection:bg-[#5D3FD3] selection:text-white">
+    <main className="min-h-screen bg-black text-white font-sans selection:bg-[blue] selection:text-white">
       <div className="fixed inset-0 z-0 opacity-20 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
       <div className="relative z-10 max-w-3xl mx-auto pt-32 pb-20 px-6">
-        <Link href="/" className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-[#5D3FD3] transition-colors mb-16 inline-block">
+        <Link href="/" className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 hover:text-[blue] transition-colors mb-16 inline-block">
           ← Back_to_Index
         </Link>
 
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl font-black uppercase tracking-tighter mb-12 italic">
-            Privacy <span className="text-[#5D3FD3]">Policy</span>
+            Privacy <span className="text-[blue]">Policy</span>
           </h1>
 
           <div className="space-y-12 font-light leading-relaxed text-zinc-400">

@@ -12,7 +12,7 @@ export const CapabilityItem = ({ title, description, index }: { title: string, d
     >
       <div className="py-12 flex justify-between items-center transition-all duration-500">
         <div className="flex items-baseline gap-6">
-          <span className="font-mono text-xs text-[#5D3FD3]">0{index + 1}</span>
+          <span className="font-mono text-xs text-[blue]">0{index + 1}</span>
           <h3 className={`text-4xl md:text-7xl font-black uppercase tracking-tighter transition-opacity ${isOpen ? 'opacity-100' : 'opacity-40'}`}>
             {title}
           </h3>

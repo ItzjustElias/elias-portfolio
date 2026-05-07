@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Cursor from "./components/Cursor";
 import "./globals.css";
-import Scene from "./components/Scene";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,9 +32,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="scene-container fixed inset-0 z-0 pointer-events-none">
-          <Scene />
-        </div>
         <Cursor />
         <main className="relative z-10 w-full min-h-screen">
           {children}

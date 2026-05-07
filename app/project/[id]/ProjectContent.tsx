@@ -22,9 +22,9 @@ export default function ProjectContent({ id }: { id: string }) {
     tags: ["Design", "Dev"]
   };
 
-  const accentColor = isLoeka ? "#FF0000" : "#5D3FD3";
-  const textColorClass = isLoeka ? "text-red-500" : "text-[#5D3FD3]";
-  const hoverColorClass = isLoeka ? "hover:text-red-500" : "hover:text-[#5D3FD3]";
+  const accentColor = isLoeka ? "#FF0000" : "blue";
+  const textColorClass = isLoeka ? "text-red-500" : "text-[blue]";
+  const hoverColorClass = isLoeka ? "hover:text-red-500" : "hover:text-[blue]";
   const glowClass = isLoeka ? "drop-shadow-[0_0_35px_rgba(255,0,0,0.5)]" : "";
 
   return (
@@ -36,7 +36,7 @@ export default function ProjectContent({ id }: { id: string }) {
       <div className="max-w-7xl mx-auto relative">
         <GridCross className="-top-10 -left-4" isLoeka={isLoeka} />
 
-        <Link href="/" className={`group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 ${hoverColorClass} transition-colors mb-16`}>
+        <Link href="/" className={`group inline-flex items-center gap-2 font-bold text-[15px] uppercase tracking-[0.3em] text-zinc-500 ${hoverColorClass} transition-colors mb-16`}>
           <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Index
         </Link>
 
@@ -47,7 +47,7 @@ export default function ProjectContent({ id }: { id: string }) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className={glowClass}
           >
-            <span className={`font-mono ${textColorClass} text-xs mb-4 block uppercase tracking-widest transition-colors`}>
+            <span className={`font-bold ${textColorClass} text-xs mb-4 block uppercase tracking-widest transition-colors`}>
               {isLoeka ? "❤ System.Affection: Maximum" : project.context}
             </span>
 
@@ -73,7 +73,7 @@ export default function ProjectContent({ id }: { id: string }) {
                 transition={{ delay: 0.2 + (i * 0.1) }}
                 className="flex flex-col gap-1"
               >
-                <span className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">{info.label}</span>
+                <span className="font-bold text-[9px] text-zinc-600 uppercase tracking-widest">{info.label}</span>
                 <span className="text-sm font-bold uppercase" style={{ color: (isLoeka && i === 0) ? accentColor : 'white' }}>
                   {info.val}
                 </span>
@@ -90,7 +90,7 @@ export default function ProjectContent({ id }: { id: string }) {
             className="md:col-span-5"
           >
             <h2 className="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.5em] mb-6">
-              {isLoeka ? "Message" : "Abstract"}
+              {isLoeka ? "Message" : ""}
             </h2>
             <p className={`text-xl md:text-2xl leading-relaxed font-light transition-colors ${isLoeka ? 'text-zinc-100' : 'text-zinc-300'}`}>
               {project.description}
@@ -100,7 +100,7 @@ export default function ProjectContent({ id }: { id: string }) {
                 <span
                   key={tag}
                   style={{ borderColor: isLoeka ? `${accentColor}44` : '' }}
-                  className={`px-4 py-2 border rounded-full text-[10px] uppercase font-mono transition-colors ${isLoeka ? 'text-red-400' : 'border-white/5 text-zinc-500'}`}
+                  className={`px-4 py-2 border rounded-full text-[15px] uppercase font-bold transition-colors ${isLoeka ? 'text-red-400' : 'border-white/5 text-zinc-500'}`}
                 >
                   {tag}
                 </span>
@@ -116,7 +116,7 @@ export default function ProjectContent({ id }: { id: string }) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-full overflow-hidden transition-all hover:border-[#5D3FD3]/50"
+                    className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-full overflow-hidden transition-all hover:border-[blue]/50"
                     style={{ borderColor: isLoeka ? '#FF000044' : '' }}
                   >
                     <div
@@ -147,10 +147,10 @@ export default function ProjectContent({ id }: { id: string }) {
               className={`aspect-video border rounded-4xl overflow-hidden group relative transition-colors ${isLoeka ? 'bg-red-950/20 border-red-500/20' : 'bg-zinc-900/30 border-white/10'}`}
             >
               <div
-                style={{ backgroundColor: isLoeka ? accentColor : '#5D3FD3' }}
+                style={{ backgroundColor: isLoeka ? accentColor : 'blue' }}
                 className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity"
               />
-              <div className="absolute top-6 right-6 font-mono text-[10px] text-zinc-700">{isLoeka ? "LOVE.01" : "FIG. 01"}</div>
+              <div className="absolute top-6 right-6 font-mono text-[10px] text-zinc-700">{isLoeka ? "LOVE.01" : ""}</div>
             </motion.div>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function ProjectContent({ id }: { id: string }) {
           <Link
             href={isLoeka ? "/" : "/project/minecraft"}
             style={{ color: isLoeka ? accentColor : '' }}
-            className={`text-4xl md:text-6xl font-black uppercase transition-colors italic ${isLoeka ? 'opacity-50 hover:opacity-100' : 'hover:text-[#5D3FD3] text-white'}`}
+            className={`text-4xl md:text-6xl font-black uppercase transition-colors italic ${isLoeka ? 'opacity-50 hover:opacity-100' : 'hover:text-[blue] text-white'}`}
           >
             {isLoeka ? "You are my favorite project ❤" : "Next Project →"}
           </Link>
