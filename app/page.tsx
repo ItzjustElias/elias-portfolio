@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { CapabilityItem } from "../app/components/CapabilityItem";
 import { useRouter } from "next/navigation";
 import { IconArrowNarrowDown } from "@tabler/icons-react";
 import Link from "next/link";
@@ -182,106 +181,116 @@ export default function Home() {
             BLOEM
           </h1>
           <div className="flex items-center justify-center gap-4 mt-8">
-            <div className="h-1px w-12 bg-[blue]" />
+            <div className="h-1px w-12 bg-white/20" />
             <p className="text-zinc-500 uppercase tracking-[0.5em] text-[10px] md:text-sm font-bold">
               Creative Developer & Designer
             </p>
-            <div className="h-1px w-12 bg-[blue]" />
+            <div className="h-1px w-12 bg-white/20" />
           </div>
         </div>
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <div className="w-1px h-12 bg-linear-to-b from-[blue] to-transparent" />
+          <div className="w-2px h-14 bg-linear-to-b from-[white/20] to-transparent" />
           <IconArrowNarrowDown stroke={2} />
         </div>
       </section>
 
       <section className="relative z-20 py-20 border-y border-white/5 bg-black/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
-          {[
-            { label: "Available for", val: "FREELANCE" },
-            { label: "Based in", val: "BELGIUM" },
-            { label: "Focus", val: "REACT / JAVA" },
-            { label: "Experience", val: "2+ YEARS" },
-          ].map((stat, i) => (
-            <div key={i} className="flex flex-col gap-2">
-              <span className="font-bold text-[10px] text-[blue]">
-                {stat.label}
-              </span>
-              <span className="text-xl font-bold tracking-tight uppercase">
-                {stat.val}
-              </span>
-            </div>
-          ))}
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Added justify-items-center to center the columns themselves */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 justify-items-center">
+            {[
+              { label: "Available for", val: "FREELANCE" },
+              { label: "Based in", val: "BELGIUM" },
+              { label: "Focus", val: "REACT / JAVA" },
+              { label: "Experience", val: "2+ YEARS" },
+            ].map((stat, i) => (
+              /* Changed border-l to a centered layout with a small top accent or just centered text */
+              <div
+                key={i}
+                className="flex flex-col items-center justify-center gap-1.5 transition-all group"
+              >
+                <span className="font-bold text-[10px] uppercase tracking-[0.2em] text-white/30 text-center">
+                  {stat.label}
+                </span>
+                <span className="text-lg md:text-xl font-bold tracking-tight uppercase text-zinc-100 text-center">
+                  {stat.val}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* CV Section */}
+          <div className="flex flex-col items-center justify-center gap-3 pt-12">
+            {/* Reduced w-200 to something more reasonable like w-24 or w-32 */}
+            <div className="w-200 border-t border-white/10 mb-4"></div>
+
+            <a
+              href="/CV_ELIAS_BLOEM.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center w-full max-w-40 gap-2 px-5 py-2.5 border border-white/10 rounded-lg text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white hover:border-white/20 transition-all bg-white/[0.02] hover:bg-white/[0.04]"
+            >
+              View CV
+            </a>
+
+            <a
+              href="/CV_ELIAS_BLOEM.pdf"
+              download="CV_ELIAS_BLOEM.pdf"
+              className="group inline-flex items-center justify-center w-full max-w-20 gap-2 px-5 py-2.5 border border-white/10 rounded-lg text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white hover:border-white/20 transition-all bg-white/[0.02] hover:bg-white/[0.04]"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+              >
+                <path d="M.5 9.9a.5.5 0 01.5.5v2.5a1 1 0 001 1h12a1 1 0 001-1v-2.5a.5.5 0 011 0v2.5a2 2 0 01-2 2H2a2 2 0 01-2-2v-2.5a.5.5 0 01.5-.5z" />
+                <path d="M7.646 11.854a.5.5 0 00.708 0l3-3a.5.5 0 00-.708-.708L8.5 10.293V1.5a.5.5 0 00-1 0v8.793L5.354 8.146a.5.5 0 10-.708.708l3 3z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 
       <section
         ref={techRef}
-        className="relative z-20 py-20 px-6 border-y border-white/5 bg-zinc-950/50"
+        className="relative z-20 py-20 px-6 border-b border-white/5"
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
-              TECH <span className="text-[blue]">TOOLS</span>
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+              TECH <span className="text-white/20">TOOLS</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-px bg-white/5 border border-white/5 overflow-hidden rounded-3xl">
+          <div className="grid grid-cols-4 md:grid-cols-8 gap-px bg-white/5 border border-white/5 overflow-hidden rounded-2xl">
             {TECH_DATA.map((tech, i) => (
               <div
                 key={i}
-                className="tech-card group relative bg-black p-2 md:p-6 flex flex-col items-center justify-center gap-2 md:gap-4 hover:bg-zinc-900 transition-colors aspect-square"
+                className="tech-card group relative bg-[#0d1117] p-2 md:p-4 flex flex-col items-center justify-center gap-2 hover:bg-zinc-900/80 transition-colors aspect-square"
               >
                 <Image
                   src={`https://skillicons.dev/icons?i=${tech.id}`}
                   alt={tech.name}
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+                  width={28}
+                  height={28}
+                  className="w-6 h-6 md:w-7 md:h-7 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
                 />
-                <div className="text-center">
-                  <p className="text-[11px] font-bold text-zinc-600 uppercase tracking-tighter">
-                    {tech.cat}
-                  </p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest group-hover:text-[blue] transition-colors">
-                    {tech.name}
-                  </p>
-                </div>
-                <div className="absolute inset-0 bg-[blue]/5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity" />
+                <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-wider text-zinc-700 group-hover:text-zinc-400 transition-colors text-center leading-tight">
+                  {tech.name}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative z-30 py-10 bg-black px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col border-t border-white/10">
-            <CapabilityItem
-              index={0}
-              title="Creative Direction"
-              description="Translating complex ideas into visual stories that resonate. I focus on the intersection of art and technology."
-            />
-            <CapabilityItem
-              index={1}
-              title="WebGL Development"
-              description="High-performance 3D experiences for the modern web. Using Three.js and GLSL to push the boundaries of the browser."
-            />
-            <CapabilityItem
-              index={2}
-              title="UI/UX Design"
-              description="Systems-driven design that prioritizes both aesthetics and usability. Building interfaces that feel natural."
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-30 bg-black px-6 pb-20">
+      <section className="py-15 relative z-30 bg-black px-6 pb-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-12">
             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
-              SELECTED <span style={{ color: "blue" }}>Projects</span>
+              SELECTED <span className="text-white/20">Projects</span>
             </h2>
           </div>
 
@@ -296,18 +305,13 @@ export default function Home() {
                   className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-8 border-b border-white/10 hover:border-white/20 transition-all"
                   style={{ textDecoration: "none" }}
                 >
-                  <span
-                    className="font-bold text-[11px] tracking-widest shrink-0"
-                    style={{ color: "blue" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
 
                   <h3
                     className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none transition-colors shrink-0"
                     style={{ color: "#e6edf3" }}
                     onMouseEnter={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color = "blue")
+                      ((e.currentTarget as HTMLElement).style.color =
+                        "white/20")
                     }
                     onMouseLeave={(e) =>
                       ((e.currentTarget as HTMLElement).style.color = "#e6edf3")
@@ -343,10 +347,7 @@ export default function Home() {
                     >
                       {p.year}
                     </span>
-                    <span
-                      className="text-lg transition-transform group-hover:translate-x-1"
-                      style={{ color: "blue" }}
-                    >
+                    <span className="text-lg transition-transform group-hover:translate-x-1 text-white/20">
                       →
                     </span>
                   </div>
@@ -357,49 +358,39 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="text-center relative z-30 bg-black">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-30 bg-transparent" />
+      <footer className="relative z-30 bg-black pb-12 px-6 text-center">
         <h2
-          style={{
-            fontSize: "clamp(2.5rem, 20vw, 18rem)",
-            fontWeight: 900,
-            textTransform: "uppercase",
-            color: "#18181b",
-            lineHeight: 1,
-            letterSpacing: "-0.04em",
-          }}
+          className="font-black uppercase leading-none tracking-tighter text-zinc-900 select-none"
+          style={{ fontSize: "clamp(2.5rem, 20vw, 18rem)" }}
         >
           Hello World
         </h2>
-        <div className="mt-12 flex flex-wrap justify-center gap-4 md:gap-8 font-bold text-[10px] uppercase text-zinc-500 tracking-widest">
-          <a
-            href="https://www.instagram.com/bloemelias/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://be.linkedin.com/in/elias-bloem-048470267"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/ItzjustElias"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-          >
-            Github
-          </a>
+        <div className="flex flex-wrap justify-center gap-6 mt-8">
+          {[
+            {
+              label: "Instagram",
+              href: "https://www.instagram.com/bloemelias/",
+            },
+            {
+              label: "LinkedIn",
+              href: "https://be.linkedin.com/in/elias-bloem-048470267",
+            },
+            { label: "GitHub", href: "https://github.com/ItzjustElias" },
+          ].map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 hover:text-white transition-colors"
+            >
+              {l.label}
+            </a>
+          ))}
         </div>
         <a
           href="/privacy"
-          className="hover:text-white transition-colors text-[10px] font-bold text-zinc-500 tracking-widest"
+          className="inline-block mt-4 text-[10px] font-bold uppercase tracking-widest text-zinc-800 hover:text-zinc-500 transition-colors"
         >
           Privacy Policy
         </a>
