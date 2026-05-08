@@ -23,6 +23,7 @@ export default function Home() {
   const bentoRef = useRef(null);
   const techRef = useRef(null);
   const router = useRouter();
+  const dotsRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -95,6 +96,13 @@ export default function Home() {
         duration: 0.8,
         ease: "power3.out",
       });
+
+      gsap.to(dotsRef.current, {
+        backgroundPosition: "0px -40px", // Match your backgroundSize height (40px)
+        duration: 3, // Adjust for speed (higher = slower)
+        ease: "none",
+        repeat: -1,
+      });
     });
 
     return () => ctx.revert();
@@ -151,6 +159,7 @@ export default function Home() {
       className="relative  min-h-screen overflow-x-hidden text-white bg-[#0d1117]"
     >
       <div
+        ref={dotsRef}
         className="fixed inset-0 z-0 opacity-20 pointer-events-none"
         style={{
           backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
@@ -305,7 +314,6 @@ export default function Home() {
                   className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-8 border-b border-white/10 hover:border-white/20 transition-all"
                   style={{ textDecoration: "none" }}
                 >
-
                   <h3
                     className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none transition-colors shrink-0"
                     style={{ color: "#e6edf3" }}
