@@ -5,7 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { CapabilityItem } from "../app/components/CapabilityItem";
 import { useRouter } from "next/navigation";
-import { IconArrowNarrowDown } from '@tabler/icons-react';
+import { IconArrowNarrowDown } from "@tabler/icons-react";
+import Link from "next/link";
+import { PROJECT_DATA } from "./lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,8 +151,13 @@ export default function Home() {
       ref={mainRef}
       className="relative  min-h-screen overflow-x-hidden text-white bg-[#0d1117]"
     >
-      <div className="fixed inset-0 z-0 opacity-20 pointer-events-none" 
-           style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      <div
+        className="fixed inset-0 z-0 opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
       <div className="fixed inset-0 pointer-events-none z-50">
         <GridCross className="top-4 left-4" />
         <GridCross className="top-4 right-4" />
@@ -159,10 +166,17 @@ export default function Home() {
       </div>
 
       <section className="relative h-screen z-10 flex items-center justify-center">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        </div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none"></div>
         <div className="hero-content text-center px-4">
-          <h1 className="text-[15vw] font-black uppercase leading-[0.8] tracking-tighter text-white">
+          <h1
+            style={{
+              fontSize: "clamp(3.5rem, 15vw, 14rem)",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              lineHeight: 0.8,
+              letterSpacing: "-0.04em",
+            }}
+          >
             ELIAS
             <br />
             BLOEM
@@ -182,7 +196,7 @@ export default function Home() {
       </section>
 
       <section className="relative z-20 py-20 border-y border-white/5 bg-black/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
           {[
             { label: "Available for", val: "FREELANCE" },
             { label: "Based in", val: "BELGIUM" },
@@ -212,11 +226,11 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-px bg-white/5 border border-white/5 overflow-hidden rounded-3xl">
+          <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-px bg-white/5 border border-white/5 overflow-hidden rounded-3xl">
             {TECH_DATA.map((tech, i) => (
               <div
                 key={i}
-                className="tech-card group relative bg-black p-6 flex flex-col items-center justify-center gap-4 hover:bg-zinc-900 transition-colors aspect-square"
+                className="tech-card group relative bg-black p-2 md:p-6 flex flex-col items-center justify-center gap-2 md:gap-4 hover:bg-zinc-900 transition-colors aspect-square"
               >
                 <Image
                   src={`https://skillicons.dev/icons?i=${tech.id}`}
@@ -262,12 +276,102 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="relative z-30 bg-black px-6 pb-20">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="mb-12">
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
+              SELECTED <span style={{ color: "blue" }}>Projects</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col border-t border-white/10">
+            {(["zero", "minecraft"] as const).map((pid, i) => {
+              const p = PROJECT_DATA[pid];
+              if (!p) return null;
+              return (
+                <Link
+                  key={pid}
+                  href={`/project/${pid}`}
+                  className="group flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-8 border-b border-white/10 hover:border-white/20 transition-all"
+                  style={{ textDecoration: "none" }}
+                >
+                  <span
+                    className="font-bold text-[11px] tracking-widest shrink-0"
+                    style={{ color: "blue" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <h3
+                    className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none transition-colors shrink-0"
+                    style={{ color: "#e6edf3" }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "blue")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.color = "#e6edf3")
+                    }
+                  >
+                    {p.title}
+                  </h3>
+
+                  <div
+                    className="hidden md:block flex-1 h-px"
+                    style={{ background: "rgba(255,255,255,0.06)" }}
+                  />
+
+                  <div className="flex flex-wrap gap-2 shrink-0">
+                    {p.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border transition-colors"
+                        style={{
+                          borderColor: "rgba(0,100,255,0.2)",
+                          color: "#7d8590",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3 shrink-0">
+                    <span
+                      className="font-bold text-[11px] tracking-widest"
+                      style={{ color: "#7d8590" }}
+                    >
+                      {p.year}
+                    </span>
+                    <span
+                      className="text-lg transition-transform group-hover:translate-x-1"
+                      style={{ color: "blue" }}
+                    >
+                      →
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <footer className="text-center relative z-30 bg-black">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-30 bg-transparent" />
-        <h2 className="text-[20vw] font-black uppercase text-zinc-900 leading-none tracking-tighter">
+        <h2
+          style={{
+            fontSize: "clamp(2.5rem, 20vw, 18rem)",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            color: "#18181b",
+            lineHeight: 1,
+            letterSpacing: "-0.04em",
+          }}
+        >
           Hello World
         </h2>
-        <div className="mt-12 flex justify-center gap-8 font-bold text-[10px] uppercase text-zinc-500 tracking-widest">
+        <div className="mt-12 flex flex-wrap justify-center gap-4 md:gap-8 font-bold text-[10px] uppercase text-zinc-500 tracking-widest">
           <a
             href="https://www.instagram.com/bloemelias/"
             target="_blank"
