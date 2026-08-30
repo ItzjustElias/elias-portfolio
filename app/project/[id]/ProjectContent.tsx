@@ -54,10 +54,16 @@ export default function ProjectContent({ id }: { id: string }) {
             className="flex items-center gap-6 text-[13px] font-bold uppercase"
             style={{ color: "var(--ink)" }}
           >
-            <Link href="/#projects" className="hover:opacity-70 transition-opacity">
+            <Link
+              href="/#projects"
+              className="hover:opacity-70 transition-opacity"
+            >
               Projects
             </Link>
-            <Link href="/#about" className="hover:opacity-70 transition-opacity">
+            <Link
+              href="/#about"
+              className="hover:opacity-70 transition-opacity"
+            >
               About
             </Link>
             <a
@@ -71,6 +77,29 @@ export default function ProjectContent({ id }: { id: string }) {
             </a>
           </div>
         </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto pt-1 pb-2 px-2">
+        <Link
+          href="/#projects"
+          className="text-[10px] font-bold uppercase tracking-[0.3em] mb-[-60] inline-block transition-colors"
+          style={{ color: "var(--accent)" }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 32 24"
+            strokeWidth={5}
+            stroke="currentColor"
+            className="w-10 h-10 scale-x-[-1]"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 12h24M22 5l7 7-7 7"
+            />
+          </svg>
+        </Link>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-20">
@@ -268,175 +297,175 @@ export default function ProjectContent({ id }: { id: string }) {
       </div>
 
       <footer
-          className="relative border-t px-6 pt-14 pb-10"
-          style={{
-            borderColor: "var(--paper-line)",
-            backgroundColor: "var(--card)",
-          }}
-        >
-          <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col items-center text-center gap-6 pb-14">
-              <h2
-                className="font-hand font-bold text-5xl md:text-6xl"
-                style={{ color: "var(--ink)" }}
-              >
-                Let&apos;s build something.
-              </h2>
-              <p
-                className="max-w-md text-sm leading-relaxed"
-                style={{ color: "var(--ink-soft)" }}
-              >
-                Got a project, an idea, or just want to say hi? My inbox is
-                always open for freelance work and interesting collaborations.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4 mt-2">
-                <a
-                  href="/CV_ELIAS_BLOEM.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
-                  style={{ borderColor: "var(--ink)" }}
-                >
-                  View CV
-                </a>
-                <a
-                  href="/CV_ELIAS_BLOEM.pdf"
-                  download="CV_ELIAS_BLOEM.pdf"
-                  className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
-                  style={{ borderColor: "var(--ink)" }}
-                >
-                  Download CV
-                </a>
-              </div>
-            </div>
-
-            <div className="max-w-xs mx-auto opacity-70 mb-10">
-              <SketchDivider color="var(--ink-faint)" height={20} />
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 text-center md:text-left">
-              <div>
-                <p
-                  className="font-hand font-bold text-2xl mb-3"
-                  style={{ color: "var(--accent)" }}
-                >
-                  Elias Bloem
-                </p>
-                <p
-                  className="text-xs leading-relaxed"
-                  style={{ color: "var(--ink)" }}
-                >
-                  Creative developer building interfaces, tools and the
-                  occasional late-night experiment.
-                </p>
-              </div>
-
-              <div>
-                <p
-                  className="text-[13px] font-bold uppercase tracking-widest mb-3"
-                  style={{ color: "var(--ink)" }}
-                >
-                  Site
-                </p>
-                <div className="flex flex-col gap-2 text-sm items-center md:items-start">
-                  <a
-                    href="#about"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="hover:opacity-70 transition-opacity"
-                  >
-                    About
-                  </a>
-                  <a
-                    href="#projects"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="hover:opacity-70 transition-opacity"
-                  >
-                    Projects
-                  </a>
-                  <Link
-                    href="/privacy"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="hover:opacity-70 transition-opacity"
-                  >
-                    Privacy Policy
-                  </Link>
-                </div>
-              </div>
-
-              <div>
-                <p
-                  className="text-[13px] font-bold uppercase tracking-widest mb-3"
-                  style={{ color: "var(--ink)" }}
-                >
-                  Connect
-                </p>
-                <div className="flex flex-col gap-2 text-sm items-center md:items-start">
-                  <a
-                    href="mailto:elias.bloem@telenet.be"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-                  >
-                    <IconMail size={15} /> Email
-                  </a>
-                  <a
-                    href="https://www.instagram.com/bloemelias/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-                  >
-                    <IconBrandInstagram size={15} /> Instagram
-                  </a>
-                  <a
-                    href="https://be.linkedin.com/in/elias-bloem-048470267"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-                  >
-                    <IconBrandLinkedin size={15} /> LinkedIn
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <p
-                  className="text-[13px] font-bold uppercase tracking-widest mb-3"
-                  style={{ color: "var(--ink)" }}
-                >
-                  Code
-                </p>
-                <div className="flex flex-col gap-2 text-sm items-center md:items-start">
-                  <a
-                    href="https://github.com/ItzjustElias"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "var(--ink-soft)" }}
-                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-                  >
-                    <IconBrandGithub size={15} /> GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="flex flex-col md:flex-row items-center justify-between gap-3 pt-6 border-t text-[13px]"
-              style={{
-                borderColor: "var(--paper-line)",
-                color: "var(--ink)",
-              }}
+        className="relative border-t px-6 pt-14 pb-10"
+        style={{
+          borderColor: "var(--paper-line)",
+          backgroundColor: "var(--card)",
+        }}
+      >
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col items-center text-center gap-6 pb-14">
+            <h2
+              className="font-hand font-bold text-5xl md:text-6xl"
+              style={{ color: "var(--ink)" }}
             >
-              <span>
-                © {new Date().getFullYear()} Elias Bloem. All rights reserved.
-              </span>
-              <span className="font-hand normal-case tracking-normal text-sm">
-                Made with care, in Belgium.
-              </span>
+              Let&apos;s build something.
+            </h2>
+            <p
+              className="max-w-md text-sm leading-relaxed"
+              style={{ color: "var(--ink-soft)" }}
+            >
+              Got a project, an idea, or just want to say hi? My inbox is always
+              open for freelance work and interesting collaborations.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 mt-2">
+              <a
+                href="/CV_ELIAS_BLOEM.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
+                style={{ borderColor: "var(--ink)" }}
+              >
+                View CV
+              </a>
+              <a
+                href="/CV_ELIAS_BLOEM.pdf"
+                download="CV_ELIAS_BLOEM.pdf"
+                className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
+                style={{ borderColor: "var(--ink)" }}
+              >
+                Download CV
+              </a>
             </div>
           </div>
-        </footer>
+
+          <div className="max-w-xs mx-auto opacity-70 mb-10">
+            <SketchDivider color="var(--ink-faint)" height={20} />
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 text-center md:text-left">
+            <div>
+              <p
+                className="font-hand font-bold text-2xl mb-3"
+                style={{ color: "var(--accent)" }}
+              >
+                Elias Bloem
+              </p>
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: "var(--ink)" }}
+              >
+                Creative developer building interfaces, tools and the occasional
+                late-night experiment.
+              </p>
+            </div>
+
+            <div>
+              <p
+                className="text-[13px] font-bold uppercase tracking-widest mb-3"
+                style={{ color: "var(--ink)" }}
+              >
+                Site
+              </p>
+              <div className="flex flex-col gap-2 text-sm items-center md:items-start">
+                <a
+                  href="#about"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="hover:opacity-70 transition-opacity"
+                >
+                  About
+                </a>
+                <a
+                  href="#projects"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="hover:opacity-70 transition-opacity"
+                >
+                  Projects
+                </a>
+                <Link
+                  href="/privacy"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="hover:opacity-70 transition-opacity"
+                >
+                  Privacy Policy
+                </Link>
+              </div>
+            </div>
+
+            <div>
+              <p
+                className="text-[13px] font-bold uppercase tracking-widest mb-3"
+                style={{ color: "var(--ink)" }}
+              >
+                Connect
+              </p>
+              <div className="flex flex-col gap-2 text-sm items-center md:items-start">
+                <a
+                  href="mailto:elias.bloem@telenet.be"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                >
+                  <IconMail size={15} /> Email
+                </a>
+                <a
+                  href="https://www.instagram.com/bloemelias/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                >
+                  <IconBrandInstagram size={15} /> Instagram
+                </a>
+                <a
+                  href="https://be.linkedin.com/in/elias-bloem-048470267"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                >
+                  <IconBrandLinkedin size={15} /> LinkedIn
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <p
+                className="text-[13px] font-bold uppercase tracking-widest mb-3"
+                style={{ color: "var(--ink)" }}
+              >
+                Code
+              </p>
+              <div className="flex flex-col gap-2 text-sm items-center md:items-start">
+                <a
+                  href="https://github.com/ItzjustElias"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--ink-soft)" }}
+                  className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                >
+                  <IconBrandGithub size={15} /> GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="flex flex-col md:flex-row items-center justify-between gap-3 pt-6 border-t text-[13px]"
+            style={{
+              borderColor: "var(--paper-line)",
+              color: "var(--ink)",
+            }}
+          >
+            <span>
+              © {new Date().getFullYear()} Elias Bloem. All rights reserved.
+            </span>
+            <span className="font-hand normal-case tracking-normal text-sm">
+              Made with care, in Belgium.
+            </span>
+          </div>
+        </div>
+      </footer>
     </motion.main>
   );
 }
