@@ -6,4 +6,5 @@ export interface Project {
   description: string;
   tags: string[];
   githubUrl?: string;
+  listed?: boolean;
 }

@@ -3,16 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PROJECT_DATA } from "../../lib/data";
-
-const PROJECT_ORDER = ["zero", "minecraft"] as const;
-
-function getNextProject(id: string) {
-  if (id === "theone") return null;
-  const idx = PROJECT_ORDER.indexOf(id as typeof PROJECT_ORDER[number]);
-  if (idx === -1) return null;
-  const nextId = PROJECT_ORDER[(idx + 1) % PROJECT_ORDER.length];
-  return { id: nextId, data: PROJECT_DATA[nextId] };
-}
+import SketchDivider from "@/app/components/SketchDivider";
+import {
+  IconMail,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandGithub,
+} from "@tabler/icons-react";
 
 export default function ProjectContent({ id }: { id: string }) {
   const isLoeka = id === "theone";
@@ -25,184 +22,227 @@ export default function ProjectContent({ id }: { id: string }) {
     tags: ["Design", "Dev"],
   };
 
-  const accentDim = isLoeka ? "rgba(239,68,68,0.06)" : "rgba(255,255,255,0.03)";
-  const accentBorder = isLoeka ? "rgba(239,68,68,0.2)" : "rgba(255,255,255,0.06)";
-  const next = getNextProject(id);
+  const accent = isLoeka ? "#c23b3b" : "var(--accent)";
+  const accentSoft = isLoeka ? "#c23b3b14" : "var(--accent-soft)";
+  const accentBorder = isLoeka ? "#c23b3b40" : "var(--accent-border)";
 
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="min-h-screen bg-[#0d1117] text-white"
+      className="min-h-screen paper-grid relative"
+      style={{ backgroundColor: "var(--paper)", color: "var(--ink)" }}
     >
-      {/* ── TOP BAR ── */}
-      <div className="sticky top-0 z-50 border-b border-white/5 bg-[#0d1117]/90 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600 hover:text-white transition-colors"
-          >
-            <span className="group-hover:-translate-x-0.5 transition-transform">←</span>
-            <span>Elias Bloem</span>
-          </Link>
-
-          <div className="flex items-center gap-2">
+      <div
+        className="sticky top-0 z-40 border-b backdrop-blur-sm"
+        style={{
+          borderColor: "var(--paper-line)",
+          backgroundColor: "rgba(242,237,227,0.85)",
+        }}
+      >
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/">
             <span
-              className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border"
-              style={{ borderColor: accentBorder, color: isLoeka ? "#ef4444" : "#71717a" }}
+              className="font-hand font-bold text-4xl"
+              style={{ color: "var(--ink)" }}
             >
-              {isLoeka ? "private" : project.context}
+              E
             </span>
+          </Link>
+          <div
+            className="flex items-center gap-6 text-[13px] font-bold uppercase"
+            style={{ color: "var(--ink)" }}
+          >
+            <Link href="/#projects" className="hover:opacity-70 transition-opacity">
+              Projects
+            </Link>
+            <Link href="/#about" className="hover:opacity-70 transition-opacity">
+              About
+            </Link>
+            <a
+              href="/CV_ELIAS_BLOEM.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-sm border transition-colors"
+              style={{ borderColor: "var(--ink)", color: "var(--ink)" }}
+            >
+              CV
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-
-        {/* ── HEADER ── */}
+      <div className="max-w-5xl mx-auto px-6 py-12 md:py-20">
         <motion.header
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 md:mb-24"
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="relative rounded-lg border p-8 md:p-12 mb-12 shadow-sm"
+          style={{
+            borderColor: "var(--paper-line)",
+            backgroundColor: "var(--card)",
+          }}
         >
-          {/* Context label */}
-          <p
-            className="text-[10px] uppercase tracking-[0.4em] mb-6 font-bold"
-            style={{ color: isLoeka ? "#ef4444" : "#52525b" }}
-          >
-            {isLoeka ? "❤ System.Affection: Maximum" : project.context}
-          </p>
+          <span
+            className="tape w-18 h-8 -top-4 left-12"
+            style={{ transform: "rotate(-2deg)" }}
+          />
+          <span
+            className="tape w-18 h-8 -top-4 right-12"
+            style={{ transform: "rotate(1.5deg)" }}
+          />
 
-          {/* Title */}
-          <h1
-            className="font-black uppercase tracking-tighter leading-[0.85] italic mb-10"
-            style={{
-              fontSize: "clamp(3rem, 10vw, 8rem)",
-              color: isLoeka ? "#ef4444" : "#ffffff",
-              wordBreak: "break-word",
-            }}
-          >
-            {project.title}
-          </h1>
+          <div className="max-w-3xl">
+            <p
+              className="text-xs uppercase tracking-[0.3em] mb-4 font-bold"
+              style={{ color: accent }}
+            >
+              {isLoeka ? "System.Affection: Maximum" : `${project.context}`}
+            </p>
 
-          {/* Meta strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-xl overflow-hidden">
+            <h1
+              className="font-hand font-bold tracking-tight mb-8"
+              style={{
+                fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
+                color: isLoeka ? accent : "var(--ink)",
+                lineHeight: 1.05,
+              }}
+            >
+              {project.title}
+            </h1>
+          </div>
+
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t"
+            style={{ borderColor: "var(--ink-faint)" }}
+          >
             {[
               { label: "Year", val: project.year },
               { label: "Role", val: project.role },
               { label: "Sector", val: isLoeka ? "Personal" : "Technology" },
               { label: "Status", val: isLoeka ? "∞" : "Completed" },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 + i * 0.07 }}
-                className="bg-[#0d1117] px-5 py-4"
-              >
-                <p className="text-[9px] uppercase tracking-widest text-zinc-600 mb-1">
+              <div key={i} className="space-y-1">
+                <p
+                  className="text-[10px] uppercase tracking-widest font-bold"
+                  style={{ color: "var(--ink-faint)" }}
+                >
                   {item.label}
                 </p>
                 <p
-                  className="text-sm font-black uppercase tracking-tight"
-                  style={{ color: isLoeka && i === 0 ? "#ef4444" : "#e4e4e7" }}
+                  className="text-sm font-bold uppercase tracking-wide"
+                  style={{ color: "var(--ink)" }}
                 >
                   {item.val}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.header>
 
-        {/* ── BODY ── */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-16 mb-24">
-
-          {/* Description — left / wider */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20 items-start">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="md:col-span-3 flex flex-col gap-8"
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="lg:col-span-7 flex flex-col gap-8"
           >
-            <p className="text-lg md:text-xl leading-relaxed text-zinc-300 font-light">
-              {project.description}
-            </p>
+            <div
+              className="rounded-lg border p-8 md:p-10 relative shadow-sm"
+              style={{
+                borderColor: "var(--paper-line)",
+                backgroundColor: "var(--card)",
+              }}
+            >
+              <h3
+                className="text-xs font-bold uppercase tracking-widest mb-4"
+                style={{ color: "var(--ink-faint)" }}
+              >
+                Overview
+              </h3>
+              <p
+                className="text-lg leading-relaxed mb-8"
+                style={{ color: "var(--ink-soft)" }}
+              >
+                {project.description}
+              </p>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag: string) => (
-                <span
-                  key={tag}
-                  className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border"
-                  style={{
-                    borderColor: accentBorder,
-                    color: isLoeka ? "#f87171" : "#52525b",
-                    background: accentDim,
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
+              <div
+                className="flex flex-wrap gap-2 pt-6 border-t"
+                style={{ borderColor: "var(--paper-line)" }}
+              >
+                {project.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm border shadow-xs"
+                    style={{
+                      borderColor: accentBorder,
+                      color: accent,
+                      background: accentSoft,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            {/* GitHub link */}
             {project.githubUrl && (
-              <motion.a
+              <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.55 }}
-                className="group inline-flex items-center gap-3 self-start px-5 py-3 border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-widest text-zinc-400 hover:text-white hover:border-white/20 transition-all bg-white/[0.02] hover:bg-white/[0.04]"
+                className="group inline-flex items-center justify-center gap-3 self-start px-6 py-4 rounded-md text-xs font-bold uppercase tracking-widest border transition-all hover:-translate-y-0.5 shadow-sm"
+                style={{
+                  borderColor: "var(--ink)",
+                  color: "var(--ink)",
+                  backgroundColor: "var(--card)",
+                }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
-                View Source
-                <span className="group-hover:translate-x-0.5 transition-transform">→</span>
-              </motion.a>
+                <span>View Source Repository</span>
+              </a>
             )}
           </motion.div>
 
-          {/* Preview card — right / narrower */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45 }}
-            className="md:col-span-2"
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className="lg:col-span-5"
           >
             <div
-              className="rounded-2xl border overflow-hidden aspect-[4/3] flex flex-col items-center justify-center gap-4 relative"
-              style={{ borderColor: accentBorder, background: accentDim }}
+              className="rounded-lg border overflow-hidden aspect-[4/3] flex flex-col items-center justify-center gap-4 relative shadow-sm"
+              style={{ borderColor: accentBorder, background: accentSoft }}
             >
-              {/* Decorative grid */}
               <div
-                className="absolute inset-0 opacity-30 pointer-events-none"
+                className="w-16 h-16 rounded-md border flex items-center justify-center shadow-xs"
                 style={{
-                  backgroundImage: "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
-                  backgroundSize: "24px 24px",
+                  borderColor: accentBorder,
+                  backgroundColor: "var(--card)",
                 }}
-              />
-              <div
-                className="relative z-10 w-12 h-12 rounded-xl border flex items-center justify-center"
-                style={{ borderColor: accentBorder }}
               >
                 {isLoeka ? (
-                  <svg width="22" height="22" viewBox="0 0 16 16" fill="#ef4444">
+                  <svg width="28" height="28" viewBox="0 0 16 16" fill={accent}>
                     <path d="M7.655 14.916L8 14.25l.345.666a.752.752 0 01-.69 0zm0 0L8 14.25l.345.666.002-.001.006-.003.018-.01a7.643 7.643 0 00.31-.17 22.08 22.08 0 003.433-2.414C13.956 10.731 16 8.35 16 5.5 16 2.836 13.914 1 11.75 1 10.203 1 8.847 1.802 8 3.02 7.153 1.802 5.797 1 4.25 1 2.086 1 0 2.836 0 5.5c0 2.85 2.045 5.231 3.885 6.818a22.075 22.075 0 003.744 2.584l.018.01.006.003.002.001z" />
                   </svg>
                 ) : (
-                  <svg width="22" height="22" viewBox="0 0 16 16" fill="rgba(255,255,255,0.3)">
+                  <svg width="28" height="28" viewBox="0 0 16 16" fill={accent}>
                     <path d="M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25v-8.5A1.75 1.75 0 0014.25 3H7.5a.25.25 0 01-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75z" />
                   </svg>
                 )}
               </div>
               <p
-                className="relative z-10 text-[10px] uppercase tracking-widest font-bold"
-                style={{ color: isLoeka ? "#ef4444" : "rgba(255,255,255,0.2)" }}
+                className="text-xs uppercase tracking-widest font-bold px-4 text-center"
+                style={{ color: accent }}
               >
                 {isLoeka ? project.title : `${project.role} · ${project.year}`}
               </p>
@@ -210,50 +250,193 @@ export default function ProjectContent({ id }: { id: string }) {
           </motion.div>
         </div>
 
-        {/* ── FOOTER NAV ── */}
-        <footer className="border-t border-white/5 pt-12">
+        {/* <footer className="pt-2">
           {isLoeka ? (
             <Link
               href="/"
-              className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic text-red-500/50 hover:text-red-500 transition-colors"
+              className="inline-block font-hand font-bold text-3xl md:text-4xl transition-colors hover:opacity-80"
+              style={{ color: accent }}
             >
               You are my favorite project ❤
             </Link>
           ) : next ? (
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-zinc-700 mb-2">
-                  Next Project
-                </p>
-                <Link
-                  href={`/project/${next.id}`}
-                  className="group flex items-center gap-4"
-                >
-                  <span className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic text-white/30 group-hover:text-white transition-colors">
-                    {next.data?.title}
-                  </span>
-                  <span className="text-white/30 group-hover:text-white group-hover:translate-x-1 transition-all text-2xl">
-                    →
-                  </span>
-                </Link>
-              </div>
-              <Link
-                href="/"
-                className="text-[11px] font-bold uppercase tracking-widest text-zinc-700 hover:text-white transition-colors"
-              >
-                ← All Projects
-              </Link>
-            </div>
+            <br></br>
           ) : (
-            <Link
-              href="/"
-              className="text-[11px] font-bold uppercase tracking-widest text-zinc-600 hover:text-white transition-colors"
-            >
-              ← Back to Index
-            </Link>
+            <br></br>
           )}
-        </footer>
+        </footer> */}
       </div>
+
+      <footer
+          className="relative border-t px-6 pt-14 pb-10"
+          style={{
+            borderColor: "var(--paper-line)",
+            backgroundColor: "var(--card)",
+          }}
+        >
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col items-center text-center gap-6 pb-14">
+              <h2
+                className="font-hand font-bold text-5xl md:text-6xl"
+                style={{ color: "var(--ink)" }}
+              >
+                Let&apos;s build something.
+              </h2>
+              <p
+                className="max-w-md text-sm leading-relaxed"
+                style={{ color: "var(--ink-soft)" }}
+              >
+                Got a project, an idea, or just want to say hi? My inbox is
+                always open for freelance work and interesting collaborations.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-4 mt-2">
+                <a
+                  href="/CV_ELIAS_BLOEM.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
+                  style={{ borderColor: "var(--ink)" }}
+                >
+                  View CV
+                </a>
+                <a
+                  href="/CV_ELIAS_BLOEM.pdf"
+                  download="CV_ELIAS_BLOEM.pdf"
+                  className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
+                  style={{ borderColor: "var(--ink)" }}
+                >
+                  Download CV
+                </a>
+              </div>
+            </div>
+
+            <div className="max-w-xs mx-auto opacity-70 mb-10">
+              <SketchDivider color="var(--ink-faint)" height={20} />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 text-center md:text-left">
+              <div>
+                <p
+                  className="font-hand font-bold text-2xl mb-3"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Elias Bloem
+                </p>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "var(--ink)" }}
+                >
+                  Creative developer building interfaces, tools and the
+                  occasional late-night experiment.
+                </p>
+              </div>
+
+              <div>
+                <p
+                  className="text-[13px] font-bold uppercase tracking-widest mb-3"
+                  style={{ color: "var(--ink)" }}
+                >
+                  Site
+                </p>
+                <div className="flex flex-col gap-2 text-sm items-center md:items-start">
+                  <a
+                    href="#about"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="hover:opacity-70 transition-opacity"
+                  >
+                    About
+                  </a>
+                  <a
+                    href="#projects"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="hover:opacity-70 transition-opacity"
+                  >
+                    Projects
+                  </a>
+                  <Link
+                    href="/privacy"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="hover:opacity-70 transition-opacity"
+                  >
+                    Privacy Policy
+                  </Link>
+                </div>
+              </div>
+
+              <div>
+                <p
+                  className="text-[13px] font-bold uppercase tracking-widest mb-3"
+                  style={{ color: "var(--ink)" }}
+                >
+                  Connect
+                </p>
+                <div className="flex flex-col gap-2 text-sm items-center md:items-start">
+                  <a
+                    href="mailto:elias.bloem@telenet.be"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                  >
+                    <IconMail size={15} /> Email
+                  </a>
+                  <a
+                    href="https://www.instagram.com/bloemelias/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                  >
+                    <IconBrandInstagram size={15} /> Instagram
+                  </a>
+                  <a
+                    href="https://be.linkedin.com/in/elias-bloem-048470267"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                  >
+                    <IconBrandLinkedin size={15} /> LinkedIn
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <p
+                  className="text-[13px] font-bold uppercase tracking-widest mb-3"
+                  style={{ color: "var(--ink)" }}
+                >
+                  Code
+                </p>
+                <div className="flex flex-col gap-2 text-sm items-center md:items-start">
+                  <a
+                    href="https://github.com/ItzjustElias"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "var(--ink-soft)" }}
+                    className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+                  >
+                    <IconBrandGithub size={15} /> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="flex flex-col md:flex-row items-center justify-between gap-3 pt-6 border-t text-[13px]"
+              style={{
+                borderColor: "var(--paper-line)",
+                color: "var(--ink)",
+              }}
+            >
+              <span>
+                © {new Date().getFullYear()} Elias Bloem. All rights reserved.
+              </span>
+              <span className="font-hand normal-case tracking-normal text-sm">
+                Made with care, in Belgium.
+              </span>
+            </div>
+          </div>
+        </footer>
     </motion.main>
   );
 }

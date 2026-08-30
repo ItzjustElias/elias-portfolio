@@ -1,38 +1,67 @@
 @import "tailwindcss";
 
+:root {
+  --paper: #f2ede3;
+  --paper-line: #d8cfba;
+  --ink: #2a2620;
+  --ink-soft: #6b6455;
+  --ink-faint: #9c937e;
+  --accent: #3355dd;
+  --accent-soft: #3355dd1a;
+  --accent-border: #3355dd33;
+  --tape: #f1c68d;
+  --blueprint: #418df0;
+  --card: #faf7ef;
+  --card-bg: #fef6e1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #050505;
-  color: white;
+  background-color: var(--paper);
+  color: var(--ink);
   overflow-x: hidden;
+}
+
+.paper-grid {
+  background-image:
+    linear-gradient(var(--paper-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 body::after {
   content: "";
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  inset: 0;
   background: url('https://grainy-gradients.vercel.app/noise.svg');
   opacity: 0.05;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 40;
+  mix-blend-mode: multiply;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.font-hand {
+  font-family: var(--font-hand);
 }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 20s linear infinite;
-  transition: animation-play-state 0.3s ease;
+.tape {
+  position: absolute;
+  background: var(--tape);
+  opacity: 0.85;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.group:hover .animate-marquee {
-  animation-play-state: paused;
+.hand-underline {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--accent-border);
+  text-underline-offset: 4px;
 }
 
-.glow-text:hover {
-  text-shadow: 0 0 15px rgba(93, 63, 211, 0.8), 0 0 30px rgba(93, 63, 211, 0.4);
-  color: #fff;
+::selection {
+  background: var(--accent);
+  color: var(--card);
 }
