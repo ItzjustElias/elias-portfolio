@@ -4,6 +4,8 @@ export interface Project {
   role: string;
   context: string;
   description: string;
+  longDescription: string;
+  imageUrl?: string;
   tags: string[];
   githubUrl?: string;
   listed?: boolean;

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { PROJECT_DATA } from "../../lib/data";
 import SketchDivider from "@/app/components/SketchDivider";
@@ -9,6 +10,7 @@ import {
   IconBrandInstagram,
   IconBrandLinkedin,
   IconBrandGithub,
+  IconHome,
 } from "@tabler/icons-react";
 
 export default function ProjectContent({ id }: { id: string }) {
@@ -19,6 +21,8 @@ export default function ProjectContent({ id }: { id: string }) {
     role: "Designer",
     context: "Creative Work",
     description: "Project details coming soon.",
+    longDescription: "",
+    imageUrl: "",
     tags: ["Design", "Dev"],
   };
 
@@ -77,29 +81,6 @@ export default function ProjectContent({ id }: { id: string }) {
             </a>
           </div>
         </div>
-      </div>
-
-      <div className="max-w-3xl mx-auto pt-1 pb-2 px-2">
-        <Link
-          href="/#projects"
-          className="text-[10px] font-bold uppercase tracking-[0.3em] mb-[-60] inline-block transition-colors"
-          style={{ color: "var(--accent)" }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 32 24"
-            strokeWidth={5}
-            stroke="currentColor"
-            className="w-10 h-10 scale-x-[-1]"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 12h24M22 5l7 7-7 7"
-            />
-          </svg>
-        </Link>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 py-12 md:py-20">
@@ -191,11 +172,20 @@ export default function ProjectContent({ id }: { id: string }) {
                 Overview
               </h3>
               <p
-                className="text-lg leading-relaxed mb-8"
+                className="text-lg leading-relaxed mb-6"
                 style={{ color: "var(--ink-soft)" }}
               >
                 {project.description}
               </p>
+
+              {project.longDescription && (
+                <p
+                  className="text-base leading-relaxed mb-8"
+                  style={{ color: "var(--ink-soft)" }}
+                >
+                  {project.longDescription}
+                </p>
+              )}
 
               <div
                 className="flex flex-wrap gap-2 pt-6 border-t"
@@ -217,29 +207,45 @@ export default function ProjectContent({ id }: { id: string }) {
               </div>
             </div>
 
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
+            {/* Button wrapper container */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-6 py-4 rounded-md text-xs font-bold uppercase tracking-widest border transition-all hover:-translate-y-0.5 shadow-sm"
+                  style={{
+                    borderColor: "var(--ink)",
+                    color: "var(--ink)",
+                    backgroundColor: "var(--card)",
+                  }}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  <span>View Source Repository</span>
+                </a>
+              )}
+              <Link
+                href={"/#projects"}
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 self-start px-6 py-4 rounded-md text-xs font-bold uppercase tracking-widest border transition-all hover:-translate-y-0.5 shadow-sm"
+                className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-6 py-4 rounded-md text-xs font-bold uppercase tracking-widest border transition-all hover:-translate-y-0.5 shadow-sm"
                 style={{
-                  borderColor: "var(--ink)",
-                  color: "var(--ink)",
+                  borderColor: "var(--accent)",
+                  color: "var(--accent)",
                   backgroundColor: "var(--card)",
                 }}
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                <span>View Source Repository</span>
-              </a>
-            )}
+                <IconHome size={16} />
+                <span>Go back home</span>
+              </Link>
+            </div>
           </motion.div>
 
           <motion.div
@@ -249,51 +255,29 @@ export default function ProjectContent({ id }: { id: string }) {
             className="lg:col-span-5"
           >
             <div
-              className="rounded-lg border overflow-hidden aspect-[4/3] flex flex-col items-center justify-center gap-4 relative shadow-sm"
+              className="rounded-lg border overflow-hidden aspect-4/4 relative shadow-sm flex items-center justify-center"
               style={{ borderColor: accentBorder, background: accentSoft }}
             >
-              <div
-                className="w-16 h-16 rounded-md border flex items-center justify-center shadow-xs"
-                style={{
-                  borderColor: accentBorder,
-                  backgroundColor: "var(--card)",
-                }}
-              >
-                {isLoeka ? (
-                  <svg width="28" height="28" viewBox="0 0 16 16" fill={accent}>
-                    <path d="M7.655 14.916L8 14.25l.345.666a.752.752 0 01-.69 0zm0 0L8 14.25l.345.666.002-.001.006-.003.018-.01a7.643 7.643 0 00.31-.17 22.08 22.08 0 003.433-2.414C13.956 10.731 16 8.35 16 5.5 16 2.836 13.914 1 11.75 1 10.203 1 8.847 1.802 8 3.02 7.153 1.802 5.797 1 4.25 1 2.086 1 0 2.836 0 5.5c0 2.85 2.045 5.231 3.885 6.818a22.075 22.075 0 003.744 2.584l.018.01.006.003.002.001z" />
-                  </svg>
-                ) : (
-                  <svg width="28" height="28" viewBox="0 0 16 16" fill={accent}>
-                    <path d="M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25v-8.5A1.75 1.75 0 0014.25 3H7.5a.25.25 0 01-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75z" />
-                  </svg>
-                )}
-              </div>
-              <p
-                className="text-xs uppercase tracking-widest font-bold px-4 text-center"
-                style={{ color: accent }}
-              >
-                {isLoeka ? project.title : `${project.role} · ${project.year}`}
-              </p>
+              {project.imageUrl ? (
+                <Image
+                  fill
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <p
+                  className="text-xs uppercase tracking-widest font-bold px-4 text-center"
+                  style={{ color: accent }}
+                >
+                  {isLoeka
+                    ? project.title
+                    : `${project.role} · ${project.year}`}
+                </p>
+              )}
             </div>
           </motion.div>
         </div>
-
-        {/* <footer className="pt-2">
-          {isLoeka ? (
-            <Link
-              href="/"
-              className="inline-block font-hand font-bold text-3xl md:text-4xl transition-colors hover:opacity-80"
-              style={{ color: accent }}
-            >
-              You are my favorite project ❤
-            </Link>
-          ) : next ? (
-            <br></br>
-          ) : (
-            <br></br>
-          )}
-        </footer> */}
       </div>
 
       <footer
@@ -460,7 +444,7 @@ export default function ProjectContent({ id }: { id: string }) {
             <span>
               © {new Date().getFullYear()} Elias Bloem. All rights reserved.
             </span>
-            <span className="font-hand normal-case tracking-normal text-sm">
+            <span className="font-hand normal-class tracking-normal text-sm">
               Made with care, in Belgium.
             </span>
           </div>

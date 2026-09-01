@@ -222,7 +222,7 @@ export default function HomeContent({ xLabels, series }: HomeContentProps) {
             <h2 className="font-hand font-bold text-4xl mb-6 text-center">
               Skills
             </h2>
-            <div className="grid grid-cols-2 gap-x-50 gap-y-4">
+            <div className="grid grid-cols-2 gap-x-20 md:gap-x-50 gap-y-4">
               {SKILLS.map((skill) => (
                 <div
                   key={skill.id}
