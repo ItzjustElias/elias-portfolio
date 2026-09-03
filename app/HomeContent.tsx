@@ -460,7 +460,7 @@ export default function HomeContent({ xLabels, series }: HomeContentProps) {
               style={{ color: "var(--ink-soft)" }}
             >
               Got a project, an idea, or just want to say hi? My inbox is always
-              open for freelance work and interesting collaborations.
+              open for work and interesting collaborations.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mt-2">
@@ -481,6 +481,13 @@ export default function HomeContent({ xLabels, series }: HomeContentProps) {
               >
                 Download CV
               </a>
+              <Link
+                href="/cv"
+                className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
+                style={{ borderColor: "var(--ink)" }}
+              >
+                QR CV
+              </Link>
             </div>
           </div>
 

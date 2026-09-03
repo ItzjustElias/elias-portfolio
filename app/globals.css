@@ -65,3 +65,20 @@ body::after {
   background: var(--accent);
   color: var(--card);
 }
+
+@keyframes scrollGrid {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+.animate-infinite-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--paper-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--paper-line) 1px, transparent 1px);
+  animation: scrollGrid 3s linear infinite;
+}

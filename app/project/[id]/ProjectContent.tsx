@@ -321,6 +321,13 @@ export default function ProjectContent({ id }: { id: string }) {
               >
                 Download CV
               </a>
+              <Link
+                href="/cv"
+                className="px-5 py-2.5 rounded-md border text-[11px] font-bold uppercase tracking-widest transition-colors hover:bg-(--ink) hover:text-(--card)"
+                style={{ borderColor: "var(--ink)" }}
+              >
+                QR CV
+              </Link>
             </div>
           </div>
 
