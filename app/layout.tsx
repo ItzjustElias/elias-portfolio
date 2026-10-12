@@ -1,45 +1,28 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Caveat } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import "@fontsource-variable/martian-mono/wdth.css";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const handFont = Caveat({
-  variable: "--font-hand",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: {
-    default: "Elias Bloem | Creative Developer",
+    default: "Elias Bloem | Developer",
     template: "%s | Elias Bloem",
   },
   description:
-    "Portfolio of Elias Bloem, a creative developer specializing in interactive 3D experiences and innovative web design.",
+    "Elias Bloem, developer in Belgium. Minecraft mods, VS Code extensions and small web tools.",
   metadataBase: new URL("https://eliasb.be"),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#11100e",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${handFont.variable} antialiased`}
-      >
-        <main className="relative z-10 w-full min-h-screen">{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

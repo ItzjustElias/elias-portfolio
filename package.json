@@ -1,6 +1,6 @@
 {
-  "name": "my-portfolio",
-  "version": "0.1.0",
+  "name": "elias-portfolio",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,26 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.4.2",
-    "@tabler/icons-react": "^3.43.0",
-    "@types/three": "^0.182.0",
-    "framer-motion": "^12.23.26",
+    "@fontsource-variable/martian-mono": "^5.3.0",
+    "@tailwindcss/postcss": "^4.3.3",
     "next": "16.1.1",
     "qrcode.react": "^4.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "roughjs": "^4.6.6",
-    "three": "^0.182.0"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
